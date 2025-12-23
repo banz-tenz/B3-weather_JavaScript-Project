@@ -1,0 +1,106 @@
+// Variables
+
+
+// Global
+
+body {
+  background-color: $bg-color;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Login container
+.login-contianer {
+  background: #fff;
+  width: 100%;
+  max-width: 380px;
+  padding: 30px;
+  border-radius: $radius;
+  box-shadow: $shadow;
+}
+
+// Header
+.login-healinh {
+  text-align: center;
+  margin-bottom: 25px;
+
+  h1 {
+    color: $text-color;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    color: #6b7280;
+  }
+}
+
+// Form
+.login-form {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 14px;
+    color: $text-color;
+    margin-bottom: 6px;
+  }
+
+  input {
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid $border-color;
+    border-radius: $radius;
+    font-size: 14px;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+    }
+  }
+
+  .forgot-password {
+    font-size: 13px;
+    color: $primary-color;
+    text-decoration: none;
+    margin-bottom: 20px;
+    align-self: flex-end;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .login-button {
+    background: $primary-color;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: $radius;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: darken($primary-color, 8%);
+    }
+  }
+
+  .signup-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import "mixin";
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2F3474;
+    padding: 12px 20px;
+    color: white;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    border-bottom: 1px solid white;
+    & form{
+        width: 420px;
+        display: flex;
+        align-items: center;
+        & .btn-outline-success {
+            background-color: #0D6EFD;
+            color: white;
+        }
+    }
+    & .header-action{
+        gap: 20px;
+    }
+}

@@ -1,0 +1,5 @@
+@mixin flex-box($gap:8px){
+    display: flex;
+    align-items: center;
+    gap: $gap;
+}

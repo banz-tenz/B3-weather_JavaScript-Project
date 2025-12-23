@@ -1,0 +1,22 @@
+nav{
+    padding: 12px;
+    padding-top: 80px;
+    background-color:#2F3474;
+    width: 300px;
+    height: 100vh;
+    // border-top: 1px solid white;
+    & ul{
+        list-style: none;
+        gap: 12px;
+        & .nav-link{
+            padding: 12px ;
+            border-radius: 8px;
+            font-size: 18px;
+            color: white;
+            font-weight: 600;
+            &.active{
+                background-color: #6367a9;
+            }
+        }
+    }
+}

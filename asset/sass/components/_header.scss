@@ -1,9 +1,10 @@
 @import "mixin";
+@import "variable";
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #2F3474;
+    background-color: $backroun;
     padding: 12px 20px;
     color: white;
     position: fixed;
@@ -16,8 +17,11 @@ header {
         display: flex;
         align-items: center;
         & .btn-outline-success {
-            background-color: #0D6EFD;
+            background-color: $backroun;
             color: white;
+            &::hover{
+                background-color: $hover-color;
+            }
         }
     }
     & .header-action{

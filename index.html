@@ -23,7 +23,13 @@
 
         <label class="form-check-label" for="checkNativeSwitch"> °F </label>
       </div>
-      <a href="/components/login.html"><button type="button" class="btn-primary btn-sm">Singin</button></a>
+      <div class="ms-auto d-flex align-items-center gap-2">
+          <span id="userNameDisplay" class="text-white me-3" style="display: none;">
+            Welcome, <strong id="displayUserName"></strong>
+          </span>
+          <a id="loginBtn" href="/components/login.html" class="btn btn-outline-light btn-sm">Login</a>
+          <button id="logoutBtn" class="btn btn-danger btn-sm" style="display: none;">Logout</button>
+        </div>
     </div>
   </header>
   <div class="container">

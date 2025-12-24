@@ -20,12 +20,14 @@
       <div class="logo">
         <h2>Weather App</h2>
       </div>
-      <form class="d-flex" role="search">
+      <form class="d-flex" role="search" id="search-city">
         <input
           class="form-control me-2"
           type="search"
           placeholder="Search"
           aria-label="Search"
+          name="city-name"
+          id="city-name-search"
         />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -38,50 +40,131 @@
             id="checkNativeSwitch"
             switch
           />
-          <label class="form-check-label" for="checkNativeSwitch">
-            °F
-          </label>
-          
+          <label class="form-check-label" for="checkNativeSwitch"> °F </label>
         </div>
         <button type="button" class="btn btn-primary btn-sm">Singin</button>
       </div>
-      
     </header>
-    <!-- nav start -->
-    <nav>
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
-            <i class="fa-solid fa-cloud"></i>
-            Today
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fa-solid fa-clock"></i>
-            Hourly
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fa-solid fa-calendar"></i>
-            7-Days
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fa-solid fa-calendar-days"></i>
-            Monthly
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <!-- nav end -->
+    <div class="container">
+      <!-- nav start -->
+      <nav>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <i class="fa-solid fa-cloud"></i>
+              Today
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa-solid fa-clock"></i>
+              Hourly
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa-solid fa-calendar"></i>
+              7-Days
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa-solid fa-calendar-days"></i>
+              Monthly
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- nav end -->
 
-    <!-- main start -->
-    <main>
-      
-    </main>
-    <!-- main end -->
+      <!-- main start -->
+      <main>
+        <!-- current weather section start -->
+        <section class="current-weather-section">
+          <div class="current-weather-card">
+            <div class="current-weather-header">
+              <h4 class="city-name" id="city-name">Loading</h4>
+              <button type="button" class="btn btn-outline-warning">
+                Add to favorite
+              </button>
+            </div>
+
+            <div class="current-weather-content">
+              <div class="temperature-section">
+                <div class="current-temp">30°C</div>
+                <div class="weather-condiction">cloud</div>
+              </div>
+              <div class="weather-icon" id="weather-icon">
+                <img src="asset/images/icons-weather/cloudy.png" alt="">
+              </div>
+            </div>
+
+            <div class="weather-details">
+              <div class="detail-item">
+                <i class="fas fa-wind"></i>
+                <div class="detail-text">
+                  <span class="detail-label">Wind</span>
+                  <span class="detail-value" id="wind-speed">-- km/h</span>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <i class="fas fa-tint"></i>
+                <div class="detail-text">
+                  <span class="detail-label">Humidity</span>
+                  <span class="detail-value" id="humidity">--%</span>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <i class="fas fa-temperature-half"></i>
+                <div class="detail-text">
+                  <span class="detail-label">Feels Like</span>
+                  <span class="detail-value" id="feels-like">--</span>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <i class="fas fa-gauge"></i>
+                <div class="detail-text">
+                  <span class="detail-label">Pressure</span>
+                  <span class="detail-value" id="pressure">-- hPa</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- current weather section end -->
+      </main>
+      <!-- main end -->
+    </div>
+
+
+
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyAL56dMC4liwJbNw8n_awS4Toh_i-7Xddg",
+        authDomain: "weather-app-77a84.firebaseapp.com",
+        projectId: "weather-app-77a84",
+        storageBucket: "weather-app-77a84.firebasestorage.app",
+        messagingSenderId: "819337201786",
+        appId: "1:819337201786:web:698cc9332cdacd89b053c3",
+        measurementId: "G-96LMFGYG75",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    <script src="asset/js/main.js"></script>
   </body>
 </html>

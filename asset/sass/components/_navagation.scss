@@ -1,9 +1,14 @@
+@import "variable";
+
 nav{
     padding: 12px;
     padding-top: 80px;
-    background-color:#2F3474;
-    width: 300px;
+    background-color:$backroun;
+    width: 20%;
     height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     // border-top: 1px solid white;
     & ul{
         list-style: none;
@@ -14,8 +19,12 @@ nav{
             font-size: 18px;
             color: white;
             font-weight: 600;
+            transition: all linear .3s;
             &.active{
-                background-color: #6367a9;
+                background-color: $active-color;
+            }
+            &:hover{
+                background-color: $active-color;
             }
         }
     }

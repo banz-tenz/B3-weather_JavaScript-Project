@@ -1,0 +1,63 @@
+@use "mixin";
+@import "variable";
+
+main{
+    padding-top: 80px;
+    width: 100%;
+    margin-left: 30%;
+    & .current-weather-section{
+        width: 100%;
+        background: $secondary-color;
+        // padding: 80px;
+        padding: 20px;
+        border-radius:$border-radius10 ;
+        
+        & .current-weather-card{
+            width: 100%;
+            color: white;
+            & .current-weather-header{
+                width: 100%;
+                @include space-between();
+                & .city-name{
+                    color: white;
+                }
+            }
+            & .current-temp{
+                font-size: 56px;
+                font-weight: 600;
+                // color: $accent-color;
+            }
+            & .weather-condiction{
+                color: $disabled-color;
+                font-size: 20px;
+                font-weight: 500;
+            }
+            & .current-weather-content{
+                border-bottom: 1px solid $disabled-color;
+                @include space-between();
+                & .weather-icon {
+                    width: 90px;
+                    height: 90px;
+                    margin: 12px
+                }
+            }
+            & .weather-details{
+                @include space-between();
+                margin-top: 20px;
+                & .detail-item{
+                    @include flex-box();
+                    & i {
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

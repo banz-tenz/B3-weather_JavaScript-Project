@@ -50,12 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (hasError) return;
 
-        // Button loading effect
         loginButton.disabled = true;
         const originalText = loginButton.textContent;
         loginButton.textContent = "Logging in...";
 
-        // Fake login (simulate API call)
+        // Store user in localStorage
+        localStorage.setItem("currentUser", JSON.stringify({
+            name: name,
+            loginTime: new Date().toISOString()
+        }));
+
         setTimeout(() => {
             window.location.href = '../index.html';
         }, 800);

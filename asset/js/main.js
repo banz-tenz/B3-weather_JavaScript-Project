@@ -83,10 +83,10 @@ searchCity.addEventListener("submit", (e) => {
 
 // Celsius ⇄ Fahrenheit toggle
 toFahrenheit.addEventListener("change", () => {
-    if (toFahrenheit.checked) {
+    if (toFahrenheit.checked && (tempC &&feelsLikeC !== 0) ) {
         currentTemp.textContent = `${convertToFahrenheit(tempC)} °F`;
         feelsLike.textContent = `${convertToFahrenheit(feelsLikeC)} °F`;
-    } else {
+    } else if(tempC&&feelsLikeC !== 0){
         currentTemp.textContent = `${tempC} °C`;
         feelsLike.textContent = `${feelsLikeC} °C`;
     }

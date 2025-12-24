@@ -13,7 +13,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <header>
@@ -51,13 +51,13 @@
       <nav>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link" aria-current="page" href="../index.html">
               <i class="fa-solid fa-cloud"></i>
               Today
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="components/hourly.html">
+            <a class="nav-link active" href="#">
               <i class="fa-solid fa-clock"></i>
               Hourly
             </a>
@@ -80,62 +80,12 @@
 
       <!-- main start -->
       <main>
-        <!-- current weather section start -->
-        <section class="current-weather-section">
-          <div class="current-weather-card">
-            <div class="current-weather-header">
-              <h4 class="city-name" id="city-name">Loading</h4>
-              <button type="button" class="btn btn-outline-warning" id="add-to-favorite">
-                Add to favorite
-              </button>
-            </div>
-
-            <div class="current-weather-content">
-              <div class="temperature-section">
-                <div class="current-temp" id="current-temp">--</div>
-                <div class="weather-condiction" id="weather-condiction">--</div>
-              </div>
-              <div class="weather-icon" id="weather-icons">
-                <img src="asset/images/icons-weather/cloudy.png" alt="weather-icon" id="weather-icon">
-              </div>
-            </div>
-
-            <div class="weather-details">
-              <div class="detail-item">
-                <i class="fas fa-wind"></i>
-                <div class="detail-text">
-                  <span class="detail-label">Wind</span>
-                  <span class="detail-value" id="wind-speed">-- km/h</span>
-                </div>
-              </div>
-
-              <div class="detail-item">
-                <i class="fas fa-tint"></i>
-                <div class="detail-text">
-                  <span class="detail-label">Humidity</span>
-                  <span class="detail-value" id="humidity">--%</span>
-                </div>
-              </div>
-
-              <div class="detail-item">
-                <i class="fas fa-temperature-half"></i>
-                <div class="detail-text">
-                  <span class="detail-label">Feels Like</span>
-                  <span class="detail-value" id="feels-like">--</span>
-                </div>
-              </div>
-
-              <div class="detail-item">
-                <i class="fas fa-gauge"></i>
-                <div class="detail-text">
-                  <span class="detail-label">Pressure</span>
-                  <span class="detail-value" id="pressure">-- hPa</span>
-                </div>
-              </div>
-            </div>
+        <section class="weather-hourly">
+          <div class="weather-hourly-header">
+            <h2>Hourly Header</h2>
+            <span id="city-name">- city name</span>
           </div>
         </section>
-        <!-- current weather section end -->
       </main>
       <!-- main end -->
     </div>
@@ -166,6 +116,6 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
     </script>
-    <script src="asset/js/main.js"></script>
+    <!-- <script src="../asset/js/main.js"></script> -->
   </body>
 </html>

@@ -158,6 +158,20 @@ img {
      object-fit: cover;
 }
 
+.weather-hourly .weather-hourly-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+}
+.weather-hourly .weather-hourly-header span {
+  font-size: 20px;
+  color: #A0AEC0;
+}
+
 .container {
   display: -webkit-box;
   display: -ms-flexbox;

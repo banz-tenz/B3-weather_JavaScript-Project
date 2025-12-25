@@ -16,19 +16,76 @@ function weatherDataDisplay() {
 
     if (!city) return alert("Please enter a city name");
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const urlcurrentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-    fetch(url)
+    const urlForecastTime = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+    fetch(urlcurrentWeather)
         .then(response => {
-            if (!response.ok) throw new Error("City not found");
+            if (!response.ok) alert("city not found");
             return response.json();
         })
         .then(data => {
             displayWeatherData(data);
         })
-        .catch(error => {
-            alert(error.message);
-        });
+
+    
+    fetch(urlForecastTime)
+        .then(res =>{
+            return res.json()
+        })
+        .then(data => {
+            displayTimebaseData(data.list)
+            return data.list
+        })
+        .then(dataDate =>{
+            console.log(dataDate)
+        })
+}
+
+function displayTimebaseData(list) {
+    const today = new Date().getDate();
+    weatherTable.innerHTML = ""; // clear table first
+
+    const times = {
+        Morning: null,
+        Afternoon: null,
+        Evening: null,
+        Night: null,
+    };
+
+    // 1️⃣ Collect data
+    list.forEach(item => {
+        const date = new Date(item.dt_txt);
+        const hour = date.getHours();
+
+        if (date.getDate() !== today) return;
+
+        if (hour >= 6 && hour < 12 && !times.Morning) {
+            times.Morning = item;
+        } else if (hour >= 12 && hour < 18 && !times.Afternoon) {
+            times.Afternoon = item;
+        } else if (hour >= 18 && hour < 21 && !times.Evening) {
+            times.Evening = item;
+        } else if (!times.Night) {
+            times.Night = item;
+        }
+    });
+
+    // 2️⃣ Render table rows
+    for (let time in times) {
+        const data = times[time];
+
+        weatherTable.innerHTML += `
+            <tr>
+                <td>${time}</td>
+                <td>${data ? Math.round(data.main.temp) : "N/A"} °C</td>
+                <td>${data ? Math.round(data.main.feels_like) : "N/A"} °C</td>
+                <td>${data ? data.main.humidity : "N/A"} %</td>
+                <td>${data ? data.weather[0].description : "N/A"}</td>
+            </tr>
+        `;
+    }
 }
 
 
@@ -72,6 +129,7 @@ const humidity = document.getElementById("humidity");
 const feelsLike = document.getElementById("feels-like");
 const pressure = document.getElementById("pressure");
 const toFahrenheit = document.getElementById("toFarinhiet");
+const weatherTable = document.getElementById("weather-table");
 
 const searchCity = document.getElementById("search-city");
 

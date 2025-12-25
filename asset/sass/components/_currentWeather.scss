@@ -1,10 +1,15 @@
 @use "mixin";
 @import "variable";
 
+
+
 main{
-    padding-top: 80px;
+    // padding-top: 40px;
     width: 100%;
-    margin-left: 30%;
+    margin-left: 20%;
+    position: relative;
+    // top: -120px;
+    // margin-left: 30%;
     
     & .current-weather-section{
         width: 100%;

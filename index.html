@@ -37,8 +37,9 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            id="checkNativeSwitch"
+            id="toFarinhiet"
             switch
+            
           />
           <label class="form-check-label" for="checkNativeSwitch"> °F </label>
         </div>
@@ -56,7 +57,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="components/hourly.html">
               <i class="fa-solid fa-clock"></i>
               Hourly
             </a>
@@ -84,18 +85,18 @@
           <div class="current-weather-card">
             <div class="current-weather-header">
               <h4 class="city-name" id="city-name">Loading</h4>
-              <button type="button" class="btn btn-outline-warning">
+              <button type="button" class="btn btn-outline-warning" id="add-to-favorite">
                 Add to favorite
               </button>
             </div>
 
             <div class="current-weather-content">
               <div class="temperature-section">
-                <div class="current-temp">30°C</div>
-                <div class="weather-condiction">cloud</div>
+                <div class="current-temp" id="current-temp">--</div>
+                <div class="weather-condiction" id="weather-condiction">--</div>
               </div>
-              <div class="weather-icon" id="weather-icon">
-                <img src="asset/images/icons-weather/cloudy.png" alt="">
+              <div class="weather-icon" id="weather-icons">
+                <img src="asset/images/icons-weather/cloudy.png" alt="weather-icon" id="weather-icon">
               </div>
             </div>
 
@@ -132,9 +133,43 @@
                 </div>
               </div>
             </div>
+            
+          </div>
+          <div class="current-weather-card">
+            <div class="weather-basetime">
+              <table class="weather-basetime-item">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Temperature</th>
+                    <th>Feels Like</th>
+                    <th>Weather Condiction</th>
+                    <th>Humidity</th>
+                  </tr>
+                </thead>
+                <tbody id="weather-table">
+                  <!-- <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
         <!-- current weather section end -->
+        
+        <!-- hourly weather section start -->
+         <section class="current-weather-section">
+          <div class="hourly-weather-card">
+            <div class="hourly-weather-header">
+              <h2>Hourly Weather</h2>
+            </div>
+          </div>
+         </section>
+        <!-- hourly weather section end -->
       </main>
       <!-- main end -->
     </div>

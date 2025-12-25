@@ -1,40 +1,151 @@
-// js
-
 const apiKey = "629abb62b1ae5affbd864eba93b24a22";
 
+// ---------- Temperature Convert ----------
+function convertToFahrenheit(celsius) {
+    return Math.round((celsius * 9 / 5) + 32);
+}
 
-function getWeatherData(){
-    
+function convertToCelsius(fahrenheit) {
+    return Math.round((fahrenheit - 32) * 5 / 9);
+}
+
+// ---------- Fetch Weather ----------
+function weatherDataDisplay() {
     const inputCity = document.getElementById("city-name-search");
-    let cityName = inputCity.value;
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
-    fetch(url)
+    const city = inputCity.value;
+
+    if (!city) return alert("Please enter a city name");
+
+    const urlcurrentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    const urlForecastTime = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+    fetch(urlcurrentWeather)
         .then(response => {
-            if(!response.ok){
-                throw new Error("City not found")
-            }
+            if (!response.ok) alert("city not found");
             return response.json();
         })
-        .then(data =>{
-            console.log(data)
+        .then(data => {
             displayWeatherData(data);
         })
-        .catch(error=>{
-            console.log(error)
+
+    
+    fetch(urlForecastTime)
+        .then(res =>{
+            return res.json()
+        })
+        .then(data => {
+            displayTimebaseData(data.list)
+            return data.list
+        })
+        .then(dataDate =>{
+            console.log(dataDate)
         })
 }
 
-function displayWeatherData(data){
-    cityName.textContent = `${data.name}, ${data.sys.country}`;
-    // console.log(cityName)
+function displayTimebaseData(list) {
+    const today = new Date().getDate();
+    weatherTable.innerHTML = ""; // clear table first
+
+    const times = {
+        Morning: null,
+        Afternoon: null,
+        Evening: null,
+        Night: null,
+    };
+
+    // 1️⃣ Collect data
+    list.forEach(item => {
+        const date = new Date(item.dt_txt);
+        const hour = date.getHours();
+
+        if (date.getDate() !== today) return;
+
+        if (hour >= 6 && hour < 12 && !times.Morning) {
+            times.Morning = item;
+        } else if (hour >= 12 && hour < 18 && !times.Afternoon) {
+            times.Afternoon = item;
+        } else if (hour >= 18 && hour < 21 && !times.Evening) {
+            times.Evening = item;
+        } else if (!times.Night) {
+            times.Night = item;
+        }
+    });
+
+    // 2️⃣ Render table rows
+    for (let time in times) {
+        const data = times[time];
+
+        weatherTable.innerHTML += `
+            <tr>
+                <td>${time}</td>
+                <td>${data ? Math.round(data.main.temp) : "N/A"} °C</td>
+                <td>${data ? Math.round(data.main.feels_like) : "N/A"} °C</td>
+                <td>${data ? data.main.humidity : "N/A"} %</td>
+                <td>${data ? data.weather[0].description : "N/A"}</td>
+            </tr>
+        `;
+    }
 }
 
-// display data weather DOM
+
+let tempC = 0;
+let feelsLikeC = 0;
+
+function displayWeatherData(data) {
+    cityName.textContent = `${data.name}, ${data.sys.country}`;
+
+    tempC = Math.round(data.main.temp);
+    feelsLikeC = Math.round(data.main.feels_like);
+
+    currentTemp.textContent = `${tempC} °C`;
+    feelsLike.textContent = `${feelsLikeC} °C`;
+
+    const weather = data.weather[0].main;
+    weatherCondition.textContent = weather;
+
+    if (weather === "Clouds") {
+        weatherIcon.src = "asset/images/icons-weather/cloudy.png";
+    } else if (weather === "Clear") {
+        weatherIcon.src = "asset/images/icons-weather/sun.png";
+    } else if (weather === "Rain") {
+        weatherIcon.src = "asset/images/icons-weather/weather.png";
+    } else if (weather === "Snow") {
+        weatherIcon.src = "asset/images/icons-weather/weather.png";
+    }
+
+    windSpeed.textContent = `${data.wind.speed} m/s`;
+    humidity.textContent = `${data.main.humidity} %`;
+    pressure.textContent = `${data.main.pressure} hPa`;
+}
+
+// ---------- DOM ----------
 const cityName = document.getElementById("city-name");
+const currentTemp = document.getElementById("current-temp");
+const weatherCondition = document.getElementById("weather-condiction");
+const weatherIcon = document.getElementById("weather-icon");
+const windSpeed = document.getElementById("wind-speed");
+const humidity = document.getElementById("humidity");
+const feelsLike = document.getElementById("feels-like");
+const pressure = document.getElementById("pressure");
+const toFahrenheit = document.getElementById("toFarinhiet");
+const weatherTable = document.getElementById("weather-table");
 
 const searchCity = document.getElementById("search-city");
 
-searchCity.addEventListener("submit", (e)=>{
+// ---------- Events ----------
+searchCity.addEventListener("submit", (e) => {
     e.preventDefault();
-    getWeatherData()
-})
+    weatherDataDisplay();
+});
+
+// Celsius ⇄ Fahrenheit toggle
+toFahrenheit.addEventListener("change", () => {
+    if (toFahrenheit.checked && (tempC &&feelsLikeC !== 0) ) {
+        currentTemp.textContent = `${convertToFahrenheit(tempC)} °F`;
+        feelsLike.textContent = `${convertToFahrenheit(feelsLikeC)} °F`;
+    } else if(tempC&&feelsLikeC !== 0){
+        currentTemp.textContent = `${tempC} °C`;
+        feelsLike.textContent = `${feelsLikeC} °C`;
+    }
+});

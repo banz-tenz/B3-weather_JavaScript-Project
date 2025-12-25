@@ -1,3 +1,5 @@
+@import 'variable';
+
 @mixin flex-box($gap:8px){
     display: flex;
     align-items: center;
@@ -8,4 +10,15 @@
 @mixin space-between{
     display: flex;
     justify-content: space-between;
+}
+
+
+@mixin section-header{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    & span{
+        font-size: 20px;
+        color: $disabled-color;
+    }
 }

@@ -95,25 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
 
-        if (password === "") {
-            setError(passwordInput, "Password is required");
-            hasError = true;
-        }
-
-        if (hasError) return;
-
-        loginButton.disabled = true;
-        const originalText = loginButton.textContent;
-        loginButton.textContent = "Logging in...";
-
-        // Store user in localStorage
-        localStorage.setItem("currentUser", JSON.stringify({
-            name: name,
-            loginTime: new Date().toISOString()
-        }));
-
-        setTimeout(() => {
-            window.location.href = '../index.html';
-        }, 800);
-    };
+        return true;
+    }
 });

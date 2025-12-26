@@ -39,8 +39,42 @@ function weatherDataDisplay() {
             return data.list
         })
         .then(dataDate =>{
-            console.log(dataDate)
+            // console.log(dataDate)
+            hourlyDisplayWeather(dataDate)
         })
+}
+
+function hourlyDisplayWeather(list){
+    const today = new Date().getDate();
+    hourlyTable.innerHTML = "";
+    // console.log(today)
+
+    list.forEach(item =>{
+        const date = new Date(item.dt_txt);
+        const dateDay = date.getDate();
+
+        if(today !== dateDay) {
+            return;
+        }else{
+            const hour = date.getHours();
+            const temp = Math.round(item.main.temp);
+            const feels_like = Math.round(item.main.feels_like);
+            const weatherCondition = item.weather[0].main;
+            const humidity = item.main.humidity;
+            hourlyTable.innerHTML += `
+            <tr>
+                <td>${hour} : 00</td>
+                <td>${item ? temp : "N/A"} °C</td>
+                <td>${item ? feels_like : "N/A"} °C</td>
+                <td>${item ? weatherCondition : "N/A"}</td>
+                <td>${item ? humidity : "N/A"} %</td>
+                
+            </tr>
+        `;
+
+        }
+
+    })
 }
 
 function displayTimebaseData(list) {
@@ -81,12 +115,14 @@ function displayTimebaseData(list) {
                 <td>${time}</td>
                 <td>${data ? Math.round(data.main.temp) : "N/A"} °C</td>
                 <td>${data ? Math.round(data.main.feels_like) : "N/A"} °C</td>
+                <td>${data ? data.weather[0].main : "N/A"}</td>
                 <td>${data ? data.main.humidity : "N/A"} %</td>
-                <td>${data ? data.weather[0].description : "N/A"}</td>
+                
             </tr>
         `;
     }
 }
+
 
 
 let tempC = 0;
@@ -130,6 +166,7 @@ const feelsLike = document.getElementById("feels-like");
 const pressure = document.getElementById("pressure");
 const toFahrenheit = document.getElementById("toFarinhiet");
 const weatherTable = document.getElementById("weather-table");
+const hourlyTable = document.getElementById("hourly-table-data");
 
 const searchCity = document.getElementById("search-city");
 

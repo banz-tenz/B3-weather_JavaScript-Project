@@ -4,13 +4,16 @@
 
 
 main{
-    // padding-top: 40px;
+    padding-top: 40px;
     width: 100%;
     margin-left: 20%;
     position: relative;
-    // top: -120px;
-    // margin-left: 30%;
-    
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 90vh;
+    // background-color: red;
+    overflow-y: scroll;
     & .current-weather-section{
         width: 100%;
         background: $secondary-color;
@@ -75,6 +78,23 @@ main{
             }
         }
         
+    }
+    & .current-weather-section{
+        color: white;
+        & .weather-hourly{
+            width: 100%;
+            & table {
+                border-collapse: collapse;
+                width: 100%;
+                & thead {
+                    border-bottom: 1px solid gray;
+                }
+                & th,
+                & td {
+                    padding:6px 8px ;
+                }
+            }
+        }
     }
 }
 

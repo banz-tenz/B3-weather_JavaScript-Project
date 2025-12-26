@@ -1,0 +1,9 @@
+@import "mixin";
+@import "variable";
+
+.weather-hourly{
+    // background-color: red;
+    & .weather-hourly-header{
+        @include section-header;
+    }
+}

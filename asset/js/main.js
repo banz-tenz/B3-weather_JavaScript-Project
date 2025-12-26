@@ -149,3 +149,94 @@ toFahrenheit.addEventListener("change", () => {
         feelsLike.textContent = `${feelsLikeC} °C`;
     }
 });
+// User authentication & Favorites
+document.addEventListener('DOMContentLoaded', function() {
+    const userNameDisplay = document.getElementById('userNameDisplay');
+    const displayUserName = document.getElementById('displayUserName');
+    const signupBtn = document.getElementById('signup-button');
+    const loginBtn = document.getElementById('login-button');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const addFavoriteBtn = document.getElementById('addFavoriteBtn');
+
+    // Check if user is logged in
+    const weatherAppUser = localStorage.getItem('weatherAppUser');
+    
+    if (weatherAppUser) {
+        try {
+            const user = JSON.parse(weatherAppUser);
+            // Show user info and hide login button
+            
+            displayUserName.textContent = user.name || user.fullname || 'User';
+            userNameDisplay.style.display = 'inline-block';
+            signupBtn.style.display = 'none';
+            loginBtn.style.display = 'none';
+            logoutBtn.style.display = 'inline-block';
+            // Show favorite button when logged in
+        } catch (error) {
+            console.error('Error parsing user data:', error);
+        }
+    } else {
+        // Show login button and hide logout
+        userNameDisplay.style.display = 'none';
+        signupBtn.style.display = 'inline-block';
+        loginBtn.style.display = 'inline-block';
+        logoutBtn.style.display = 'none';
+        // Hide favorite button when not logged in
+    }
+
+    // Logout functionality
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('weatherAppUser');
+            userNameDisplay.style.display = 'none';
+            signupBtn.style.display = 'inline-block';
+            loginBtn.style.display = 'inline-block';
+            logoutBtn.style.display = 'none';
+            // Redirect to login page
+            window.location.href = '../index.html';
+        });
+    }
+
+    // Favorite button functionality
+    if (addFavoriteBtn) {
+        addFavoriteBtn.addEventListener('click', function() {
+            const cityName = document.getElementById('city-name').textContent;
+            if (cityName && cityName !== 'Loading') {
+                addToFavorites(cityName);
+            } else {
+                alert('Please search for a city first');
+            }
+        });
+    }
+});
+
+// Add city to favorites
+function addToFavorites(city) {
+    let favorites = JSON.parse(localStorage.getItem('favoriteCities')) || [];
+    
+    if (!favorites.includes(city)) {
+        favorites.push(city);
+        localStorage.setItem('favoriteCities', JSON.stringify(favorites));
+        alert(`${city} added to favorites!`);
+        updateFavoriteButtonState(city);
+    } else {
+        favorites = favorites.filter(c => c !== city);
+        localStorage.setItem('favoriteCities', JSON.stringify(favorites));
+        alert(`${city} removed from favorites!`);
+        updateFavoriteButtonState(city);
+    }
+}
+
+// Update favorite button appearance
+function updateFavoriteButtonState(city) {
+    const addFavoriteBtn = document.getElementById('addFavoriteBtn');
+    let favorites = JSON.parse(localStorage.getItem('favoriteCities')) || [];
+    
+    if (favorites.includes(city)) {
+        addFavoriteBtn.classList.add('favorite-active');
+        addFavoriteBtn.innerHTML = '<i class="fas fa-heart"></i> Remove from favorite';
+    } else {
+        addFavoriteBtn.classList.remove('favorite-active');
+        addFavoriteBtn.innerHTML = '<i class="fas fa-heart"></i> Add to favorite';
+    }
+}

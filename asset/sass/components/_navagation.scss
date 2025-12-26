@@ -1,0 +1,31 @@
+@import "variable";
+
+nav{
+    padding: 12px;
+    padding-top: 80px;
+    background-color:$backroun;
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    // border-top: 1px solid white;
+    & ul{
+        list-style: none;
+        gap: 12px;
+        & .nav-link{
+            padding: 12px ;
+            border-radius: 8px;
+            font-size: 18px;
+            color: white;
+            font-weight: 600;
+            transition: all linear .3s;
+            &.active{
+                background-color: $active-color;
+            }
+            &:hover{
+                background-color: $active-color;
+            }
+        }
+    }
+}

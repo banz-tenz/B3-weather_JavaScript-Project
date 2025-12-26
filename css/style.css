@@ -1,1 +1,303 @@
-/*# sourceMappingURL=style.css.map */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #f3f4f6;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.login-contianer {
+  background: #fff;
+  width: 100%;
+  max-width: 380px;
+  padding: 30px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.login-healinh {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.login-healinh h1 {
+  color: #1f2933;
+  margin-bottom: 8px;
+}
+.login-healinh p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.login-form label {
+  font-size: 14px;
+  color: #1f2933;
+  margin-bottom: 6px;
+}
+.login-form input {
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+}
+.login-form input:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+.login-form .forgot-password {
+  font-size: 13px;
+  color: #4f46e5;
+  text-decoration: none;
+  margin-bottom: 20px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+.login-form .forgot-password:hover {
+  text-decoration: underline;
+}
+.login-form .login-button {
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+}
+.login-form .login-button:hover {
+  background: rgb(44.9677725118, 34.2274881517, 223.9725118483);
+}
+.login-form .signup-text {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+}
+.login-form .signup-text a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 500;
+}
+.login-form .signup-text a:hover {
+  text-decoration: underline;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #0C4E72;
+  padding: 12px 20px;
+  color: white;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  border-bottom: 1px solid white;
+}
+header form {
+  width: 420px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+header form .btn-outline-success {
+  background-color: #0C4E72;
+  color: white;
+}
+header form .btn-outline-success::hover {
+  background-color: #2C5282;
+}
+header .header-action {
+  gap: 20px;
+}
+
+nav {
+  padding: 12px;
+  padding-top: 80px;
+  background-color: #0C4E72;
+  width: 20%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+nav ul {
+  list-style: none;
+  gap: 12px;
+}
+nav ul .nav-link {
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+  -webkit-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+}
+nav ul .nav-link.active {
+  background-color: #1A365D;
+}
+nav ul .nav-link:hover {
+  background-color: #1A365D;
+}
+
+main {
+  width: 100%;
+  margin-left: 20%;
+  position: relative;
+}
+main .current-weather-section {
+  width: 100%;
+  background: #2B6CB0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 32px;
+  padding: 20px;
+  border-radius: 10px;
+}
+main .current-weather-section .current-weather-card {
+  width: 100%;
+  color: white;
+}
+main .current-weather-section .current-weather-card .current-weather-header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+main .current-weather-section .current-weather-card .current-weather-header .city-name {
+  color: white;
+}
+main .current-weather-section .current-weather-card .current-temp {
+  font-size: 56px;
+  font-weight: 600;
+}
+main .current-weather-section .current-weather-card .weather-condiction {
+  color: #A0AEC0;
+  font-size: 20px;
+  font-weight: 500;
+}
+main .current-weather-section .current-weather-card .current-weather-content {
+  border-bottom: 1px solid #A0AEC0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+main .current-weather-section .current-weather-card .current-weather-content .weather-icon {
+  width: 90px;
+  height: 90px;
+  margin: 12px;
+}
+main .current-weather-section .current-weather-card .weather-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid gray;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  margin-top: 20px;
+}
+main .current-weather-section .current-weather-card .weather-details .detail-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+}
+main .current-weather-section .current-weather-card .weather-details .detail-item i {
+  font-size: 24px;
+}
+main .current-weather-section .current-weather-card .weather-basetime-item {
+  width: 100%;
+  border-collapse: collapse;
+}
+main .current-weather-section .current-weather-card .weather-basetime-item thead {
+  border-bottom: 1px solid gray;
+}
+main .current-weather-section .current-weather-card .weather-basetime-item td, main .current-weather-section .current-weather-card .weather-basetime-item th {
+  padding: 6px 8px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.weather-hourly .weather-hourly-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+}
+.weather-hourly .weather-hourly-header span {
+  font-size: 20px;
+  color: #A0AEC0;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px 0;
+  margin: 0;
+}/*# sourceMappingURL=style.css.map */

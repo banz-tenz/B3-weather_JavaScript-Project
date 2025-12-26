@@ -1,0 +1,30 @@
+@import "mixin";
+@import "variable";
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $backroun;
+    padding: 12px 20px;
+    color: white;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    border-bottom: 1px solid white;
+    & form{
+        width: 420px;
+        display: flex;
+        align-items: center;
+        & .btn-outline-success {
+            background-color: $backroun;
+            color: white;
+            &::hover{
+                background-color: $hover-color;
+            }
+        }
+    }
+    & .header-action{
+        gap: 20px;
+    }
+}

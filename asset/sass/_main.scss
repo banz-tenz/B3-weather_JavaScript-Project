@@ -1,0 +1,21 @@
+//scss
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@import 'components/header';
+@import 'components/navagation';
+@import 'components/currentWeather';
+@import 'components/hourly';
+
+
+
+.container{
+    display: flex;
+    padding: 20px 0;
+    margin: 0;
+}
+

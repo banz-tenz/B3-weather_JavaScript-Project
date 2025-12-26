@@ -1,1 +1,8 @@
 //scss
+* {
+    padding: 0;
+    margin: 0;
+}
+@import 'variable/variable';
+@import 'forlogin/login';
+@import "main";

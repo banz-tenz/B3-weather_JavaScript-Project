@@ -21,13 +21,14 @@ function weatherDataDisplay() {
     const urlForecastTime = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
 
     fetch(urlcurrentWeather)
-        .then(response => {
-            if (!response.ok) alert("city not found");
-            return response.json();
-        })
-        .then(data => {
-            displayWeatherData(data);
-        })
+      .then((response) => {
+        if (!response.ok) alert("city not found");
+        return response.json();
+      })
+      .then((data) => {
+        displayWeatherData(data);
+      })
+
 
     
     fetch(urlForecastTime)
@@ -39,8 +40,78 @@ function weatherDataDisplay() {
             return data.list
         })
         .then(dataDate =>{
-            console.log(dataDate)
+            // console.log(dataDate)
+            hourlyDisplayWeather(dataDate);
+            daysForecast(dataDate);
         })
+}
+
+function daysForecast(list) {
+    
+    daysForecastTable.innerHTML = ""; 
+
+    const dates = {}; 
+
+    list.forEach(item => {
+        const date = new Date(item.dt_txt);
+        const dateStr = date.toISOString().split('T')[0]; 
+
+        if (!dates[dateStr]) {
+            
+            dates[dateStr] = item;
+        }
+    });
+
+    
+    const dailyForecastArray = Object.values(dates);
+
+    dailyForecastArray.forEach(forecast => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${new Date(forecast.dt_txt).toLocaleDateString('en-US', { weekday: 'long' })}</td>
+            <td>${forecast.main.temp.toFixed(1)} °C</td>
+            <td>${forecast.main.feels_like.toFixed(1)} °C</td>
+            <td>${forecast.weather[0].main}</td>
+            <td>${forecast.main.humidity} %</td>
+        `;
+
+        daysForecastTable.appendChild(row);
+    });
+}
+
+
+function hourlyDisplayWeather(list){
+    const today = new Date().getDate();
+    hourlyTable.innerHTML = "";
+    // console.log(today)
+
+    list.forEach(item =>{
+        const date = new Date(item.dt_txt);
+        const dateDay = date.getDate();
+
+        if(today !== dateDay) {
+            return;
+        }else{
+            const hour = date.getHours();
+            const temp = Math.round(item.main.temp);
+            const feels_like = Math.round(item.main.feels_like);
+            const weatherCondition = item.weather[0].main;
+            const humidity = item.main.humidity;
+            hourlyTable.innerHTML += `
+            <tr>
+                <td>${hour} : 00</td>
+                <td>${item ? temp : "N/A"} °C</td>
+                <td>${item ? feels_like : "N/A"} °C</td>
+                <td>${item ? weatherCondition : "N/A"}</td>
+                <td>${item ? humidity : "N/A"} %</td>
+                
+            </tr>
+        `;
+
+        }
+
+    })
 }
 
 function displayTimebaseData(list) {
@@ -54,7 +125,7 @@ function displayTimebaseData(list) {
         Night: null,
     };
 
-    // 1️⃣ Collect data
+    // 1️ Collect data
     list.forEach(item => {
         const date = new Date(item.dt_txt);
         const hour = date.getHours();
@@ -72,7 +143,7 @@ function displayTimebaseData(list) {
         }
     });
 
-    // 2️⃣ Render table rows
+    // 2️ Render table rows
     for (let time in times) {
         const data = times[time];
 
@@ -81,12 +152,14 @@ function displayTimebaseData(list) {
                 <td>${time}</td>
                 <td>${data ? Math.round(data.main.temp) : "N/A"} °C</td>
                 <td>${data ? Math.round(data.main.feels_like) : "N/A"} °C</td>
+                <td>${data ? data.weather[0].main : "N/A"}</td>
                 <td>${data ? data.main.humidity : "N/A"} %</td>
-                <td>${data ? data.weather[0].description : "N/A"}</td>
+                
             </tr>
         `;
     }
 }
+
 
 
 let tempC = 0;
@@ -130,16 +203,63 @@ const feelsLike = document.getElementById("feels-like");
 const pressure = document.getElementById("pressure");
 const toFahrenheit = document.getElementById("toFarinhiet");
 const weatherTable = document.getElementById("weather-table");
+const hourlyTable = document.getElementById("hourly-table-data");
+const daysForecastTable = document.getElementById("days-forecast-table");
+const overLay = document.getElementById("overlay");
+
+const currentWeather = document.getElementById("current-weather");
+const hourlyWeather = document.getElementById("hourly-weather");
+const daysForecastWeather = document.getElementById("days-forecast-weather");
+
+function loading(time){
+    overLay.classList.add("loading");
+
+    setTimeout(()=>{
+        overLay.classList.remove("loading");
+    },time);
+}
+
+const listLinks = document.querySelectorAll("li a");
+listLinks.forEach(link =>{
+    // link.classList.remove("active");
+    link.addEventListener("click",()=>{
+
+        listLinks.forEach(item =>{
+            item.classList.remove("active");
+        });
+
+        link.classList.add("active");
+
+        loading(1000);
+
+        if(link.getAttribute("data-section")=== 'today'){
+            currentWeather.style.display = 'block';
+            hourlyWeather.style.display = 'none';
+            daysForecastWeather.style.display = 'none';
+        }else if(link.getAttribute("data-section")=== 'hourly'){
+            currentWeather.style.display = 'none';
+            hourlyWeather.style.display = 'block';
+            daysForecastWeather.style.display = 'none';
+        }
+        else if(link.getAttribute("data-section")=== 'days-forecast'){
+            currentWeather.style.display = 'none';
+            hourlyWeather.style.display = 'none';
+            daysForecastWeather.style.display = 'block';
+        }
+    })
+})
 
 const searchCity = document.getElementById("search-city");
 
 // ---------- Events ----------
 searchCity.addEventListener("submit", (e) => {
+    
     e.preventDefault();
     weatherDataDisplay();
+    loading(600);
 });
 
-// Celsius ⇄ Fahrenheit toggle
+
 toFahrenheit.addEventListener("change", () => {
     if (toFahrenheit.checked && (tempC &&feelsLikeC !== 0) ) {
         currentTemp.textContent = `${convertToFahrenheit(tempC)} °F`;

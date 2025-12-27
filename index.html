@@ -50,28 +50,22 @@
       <!-- nav start -->
       <nav>
         <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+          <li class="nav-item" id="today">
+            <a class="nav-link active" data-section="today" aria-current="page" href="#">
               <i class="fa-solid fa-cloud"></i>
               Today
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="components/hourly.html">
+          <li class="nav-item" id="hourly">
+            <a class="nav-link" href="#" data-section="hourly">
               <i class="fa-solid fa-clock"></i>
               Hourly
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item" id="days-forecast">
+            <a class="nav-link" href="#" data-section="days-forecast">
               <i class="fa-solid fa-calendar"></i>
               7-Days
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fa-solid fa-calendar-days"></i>
-              Monthly
             </a>
           </li>
         </ul>
@@ -81,7 +75,7 @@
       <!-- main start -->
       <main>
         <!-- current weather section start -->
-        <section class="current-weather-section">
+        <section class="current-weather-section" id="current-weather">
           <div class="current-weather-card">
             <div class="current-weather-header">
               <h4 class="city-name" id="city-name">Loading</h4>
@@ -162,7 +156,7 @@
         <!-- current weather section end -->
         
         <!-- hourly weather section start -->
-         <section class="current-weather-section">
+         <section class="current-weather-section" style="display: none;" id="hourly-weather">
           <div class="hourly-weather-card">
             <div class="hourly-weather-header">
               <h2>Hourly Weather</h2>
@@ -188,7 +182,7 @@
         <!-- hourly weather section end -->
 
         <!-- 7-days forecast weather section start -->
-         <section class="current-weather-section">
+         <section class="current-weather-section" style="display: none;" id="days-forecast-weather">
           <div class="days-forecast-weather-card">
             <div class="days-weather-header">
               <h2>7-Days forecast</h2>

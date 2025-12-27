@@ -206,6 +206,33 @@ const weatherTable = document.getElementById("weather-table");
 const hourlyTable = document.getElementById("hourly-table-data");
 const daysForecastTable = document.getElementById("days-forecast-table");
 
+const currentWeather = document.getElementById("current-weather");
+const hourlyWeather = document.getElementById("hourly-weather");
+const daysForecastWeather = document.getElementById("days-forecast-weather");
+// const todaySection = document.getElementById("toay");
+// const hourlySection = document.getElementById("hourly");
+// const daysForecastSection = document.getElementById("days-forecast");
+const listLinks = document.querySelectorAll("li a");
+listLinks.forEach(link =>{
+    link.classList.remove("active");
+    link.addEventListener("click",()=>{
+        if(link.getAttribute("data-section")=== 'today'){
+            currentWeather.style.display = 'block';
+            hourlyWeather.style.display = 'none';
+            daysForecastWeather.style.display = 'none';
+        }else if(link.getAttribute("data-section")=== 'hourly'){
+            currentWeather.style.display = 'none';
+            hourlyWeather.style.display = 'block';
+            daysForecastWeather.style.display = 'none';
+        }
+        else if(link.getAttribute("data-section")=== 'days-forecast'){
+            currentWeather.style.display = 'none';
+            hourlyWeather.style.display = 'none';
+            daysForecastWeather.style.display = 'block';
+        }
+    })
+})
+
 const searchCity = document.getElementById("search-city");
 
 // ---------- Events ----------

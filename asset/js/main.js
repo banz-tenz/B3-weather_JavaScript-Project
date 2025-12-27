@@ -21,13 +21,14 @@ function weatherDataDisplay() {
     const urlForecastTime = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
 
     fetch(urlcurrentWeather)
-        .then(response => {
-            if (!response.ok) alert("city not found");
-            return response.json();
-        })
-        .then(data => {
-            displayWeatherData(data);
-        })
+      .then((response) => {
+        if (!response.ok) alert("city not found");
+        return response.json();
+      })
+      .then((data) => {
+        displayWeatherData(data);
+      })
+
 
     
     fetch(urlForecastTime)
@@ -40,9 +41,45 @@ function weatherDataDisplay() {
         })
         .then(dataDate =>{
             // console.log(dataDate)
-            hourlyDisplayWeather(dataDate)
+            hourlyDisplayWeather(dataDate);
+            daysForecast(dataDate);
         })
 }
+
+function daysForecast(list) {
+    
+    daysForecastTable.innerHTML = ""; 
+
+    const dates = {}; 
+
+    list.forEach(item => {
+        const date = new Date(item.dt_txt);
+        const dateStr = date.toISOString().split('T')[0]; 
+
+        if (!dates[dateStr]) {
+            
+            dates[dateStr] = item;
+        }
+    });
+
+    
+    const dailyForecastArray = Object.values(dates);
+
+    dailyForecastArray.forEach(forecast => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${new Date(forecast.dt_txt).toLocaleDateString('en-US', { weekday: 'long' })}</td>
+            <td>${forecast.main.temp.toFixed(1)} °C</td>
+            <td>${forecast.main.feels_like.toFixed(1)} °C</td>
+            <td>${forecast.weather[0].main} (${forecast.weather[0].description})</td>
+            <td>${forecast.main.humidity} %</td>
+        `;
+
+        daysForecastTable.appendChild(row);
+    });
+}
+
 
 function hourlyDisplayWeather(list){
     const today = new Date().getDate();
@@ -88,7 +125,7 @@ function displayTimebaseData(list) {
         Night: null,
     };
 
-    // 1️⃣ Collect data
+    // 1️ Collect data
     list.forEach(item => {
         const date = new Date(item.dt_txt);
         const hour = date.getHours();
@@ -106,7 +143,7 @@ function displayTimebaseData(list) {
         }
     });
 
-    // 2️⃣ Render table rows
+    // 2️ Render table rows
     for (let time in times) {
         const data = times[time];
 
@@ -167,6 +204,7 @@ const pressure = document.getElementById("pressure");
 const toFahrenheit = document.getElementById("toFarinhiet");
 const weatherTable = document.getElementById("weather-table");
 const hourlyTable = document.getElementById("hourly-table-data");
+const daysForecastTable = document.getElementById("days-forecast-table");
 
 const searchCity = document.getElementById("search-city");
 
@@ -176,7 +214,7 @@ searchCity.addEventListener("submit", (e) => {
     weatherDataDisplay();
 });
 
-// Celsius ⇄ Fahrenheit toggle
+
 toFahrenheit.addEventListener("change", () => {
     if (toFahrenheit.checked && (tempC &&feelsLikeC !== 0) ) {
         currentTemp.textContent = `${convertToFahrenheit(tempC)} °F`;

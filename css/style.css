@@ -10,11 +10,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .login-contianer {
@@ -24,7 +24,7 @@ body {
   padding: 30px;
   border-radius: 10px;
   -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .login-healinh {
@@ -46,8 +46,8 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .login-form label {
   font-size: 14px;
@@ -71,7 +71,7 @@ body {
   text-decoration: none;
   margin-bottom: 20px;
   -ms-flex-item-align: end;
-  align-self: flex-end;
+      align-self: flex-end;
 }
 .login-form .forgot-password:hover {
   text-decoration: underline;
@@ -106,7 +106,7 @@ body {
 
 * {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -116,12 +116,12 @@ header {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  background-color: #0c4e72;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #0C4E72;
   padding: 12px 20px;
   color: white;
   position: fixed;
@@ -136,15 +136,15 @@ header form {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 header form .btn-outline-success {
-  background-color: #0c4e72;
+  background-color: #0C4E72;
   color: white;
 }
 header form .btn-outline-success::hover {
-  background-color: #2c5282;
+  background-color: #2C5282;
 }
 header .header-action {
   gap: 20px;
@@ -153,7 +153,7 @@ header .header-action {
 nav {
   padding: 12px;
   padding-top: 80px;
-  background-color: #0c4e72;
+  background-color: #0C4E72;
   width: 20%;
   height: 100vh;
   position: fixed;
@@ -174,10 +174,10 @@ nav ul .nav-link {
   transition: all linear 0.3s;
 }
 nav ul .nav-link.active {
-  background-color: #1a365d;
+  background-color: #1A365D;
 }
 nav ul .nav-link:hover {
-  background-color: #1a365d;
+  background-color: #1A365D;
 }
 
 main {
@@ -190,22 +190,22 @@ main {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 32px;
   height: 90vh;
   overflow-y: scroll;
 }
 main .current-weather-section {
   width: 100%;
-  background: #2b6cb0;
+  background: #2B6CB0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 32px;
   padding: 20px;
   border-radius: 10px;
@@ -220,14 +220,10 @@ main .current-weather-section .current-weather-card .current-weather-header {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
-main
-  .current-weather-section
-  .current-weather-card
-  .current-weather-header
-  .city-name {
+main .current-weather-section .current-weather-card .current-weather-header .city-name {
   color: white;
 }
 main .current-weather-section .current-weather-card .current-temp {
@@ -235,24 +231,20 @@ main .current-weather-section .current-weather-card .current-temp {
   font-weight: 600;
 }
 main .current-weather-section .current-weather-card .weather-condiction {
-  color: #a0aec0;
+  color: #A0AEC0;
   font-size: 20px;
   font-weight: 500;
 }
 main .current-weather-section .current-weather-card .current-weather-content {
-  border-bottom: 1px solid #a0aec0;
+  border-bottom: 1px solid #A0AEC0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
-main
-  .current-weather-section
-  .current-weather-card
-  .current-weather-content
-  .weather-icon {
+main .current-weather-section .current-weather-card .current-weather-content .weather-icon {
   width: 90px;
   height: 90px;
   margin: 12px;
@@ -262,47 +254,33 @@ main .current-weather-section .current-weather-card .weather-details {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   border-bottom: 1px solid gray;
   padding-bottom: 24px;
   margin-bottom: 24px;
   margin-top: 20px;
 }
-main
-  .current-weather-section
-  .current-weather-card
-  .weather-details
-  .detail-item {
+main .current-weather-section .current-weather-card .weather-details .detail-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 8px;
 }
-main
-  .current-weather-section
-  .current-weather-card
-  .weather-details
-  .detail-item
-  i {
+main .current-weather-section .current-weather-card .weather-details .detail-item i {
   font-size: 24px;
 }
 main .current-weather-section .current-weather-card .weather-basetime-item {
   width: 100%;
   border-collapse: collapse;
 }
-main
-  .current-weather-section
-  .current-weather-card
-  .weather-basetime-item
-  thead {
+main .current-weather-section .current-weather-card .weather-basetime-item thead {
   border-bottom: 1px solid gray;
 }
-main .current-weather-section .current-weather-card .weather-basetime-item td,
-main .current-weather-section .current-weather-card .weather-basetime-item th {
+main .current-weather-section .current-weather-card .weather-basetime-item td, main .current-weather-section .current-weather-card .weather-basetime-item th {
   padding: 6px 8px;
 }
 main .current-weather-section {
@@ -318,8 +296,20 @@ main .current-weather-section .weather-hourly table {
 main .current-weather-section .weather-hourly table thead {
   border-bottom: 1px solid gray;
 }
-main .current-weather-section .weather-hourly table th,
-main .current-weather-section .weather-hourly table td {
+main .current-weather-section .weather-hourly table th, main .current-weather-section .weather-hourly table td {
+  padding: 6px 8px;
+}
+main .current-weather-section .days-forecast-weather {
+  width: 100%;
+}
+main .current-weather-section .days-forecast-weather table {
+  border-collapse: collapse;
+  width: 100%;
+}
+main .current-weather-section .days-forecast-weather table thead {
+  border-bottom: 1px solid gray;
+}
+main .current-weather-section .days-forecast-weather table th, main .current-weather-section .days-forecast-weather table td {
   padding: 6px 8px;
 }
 
@@ -327,7 +317,7 @@ img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .weather-hourly .weather-hourly-header {
@@ -335,13 +325,13 @@ img {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 12px;
 }
 .weather-hourly .weather-hourly-header span {
   font-size: 20px;
-  color: #a0aec0;
+  color: #A0AEC0;
 }
 
 .container {
@@ -350,4 +340,4 @@ img {
   display: flex;
   padding: 20px 0;
   margin: 0;
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

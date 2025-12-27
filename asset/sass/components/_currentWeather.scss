@@ -95,6 +95,20 @@ main{
                 }
             }
         }
+        & .days-forecast-weather{
+            width: 100%;
+            & table {
+                border-collapse: collapse;
+                width: 100%;
+                & thead {
+                    border-bottom: 1px solid gray;
+                }
+                & th,
+                & td {
+                    padding:6px 8px ;
+                }
+            }
+        }
     }
 }
 

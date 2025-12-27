@@ -72,7 +72,7 @@ function daysForecast(list) {
             <td>${new Date(forecast.dt_txt).toLocaleDateString('en-US', { weekday: 'long' })}</td>
             <td>${forecast.main.temp.toFixed(1)} °C</td>
             <td>${forecast.main.feels_like.toFixed(1)} °C</td>
-            <td>${forecast.weather[0].main} (${forecast.weather[0].description})</td>
+            <td>${forecast.weather[0].main}</td>
             <td>${forecast.main.humidity} %</td>
         `;
 

@@ -174,10 +174,11 @@ nav ul .nav-link {
   transition: all linear 0.3s;
 }
 nav ul .nav-link.active {
-  background-color: #1A365D;
+  background-color: #A0AEC0;
+  color: #1A365D;
 }
 nav ul .nav-link:hover {
-  background-color: #1A365D;
+  background-color: #A0AEC0;
 }
 
 main {
@@ -193,8 +194,8 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 32px;
-  height: 90vh;
-  overflow-y: scroll;
+  height: 80vh;
+  overflow-y: auto;
 }
 main .current-weather-section {
   width: 100%;
@@ -318,6 +319,27 @@ img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 99999;
+  background-color: rgba(146, 145, 145, 0.867);
+  display: none;
+}
+
+.overlay.loading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .weather-hourly .weather-hourly-header {

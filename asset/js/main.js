@@ -205,17 +205,33 @@ const toFahrenheit = document.getElementById("toFarinhiet");
 const weatherTable = document.getElementById("weather-table");
 const hourlyTable = document.getElementById("hourly-table-data");
 const daysForecastTable = document.getElementById("days-forecast-table");
+const overLay = document.getElementById("overlay");
 
 const currentWeather = document.getElementById("current-weather");
 const hourlyWeather = document.getElementById("hourly-weather");
 const daysForecastWeather = document.getElementById("days-forecast-weather");
-// const todaySection = document.getElementById("toay");
-// const hourlySection = document.getElementById("hourly");
-// const daysForecastSection = document.getElementById("days-forecast");
+
+function loading(time){
+    overLay.classList.add("loading");
+
+    setTimeout(()=>{
+        overLay.classList.remove("loading");
+    },time);
+}
+
 const listLinks = document.querySelectorAll("li a");
 listLinks.forEach(link =>{
-    link.classList.remove("active");
+    // link.classList.remove("active");
     link.addEventListener("click",()=>{
+
+        listLinks.forEach(item =>{
+            item.classList.remove("active");
+        });
+
+        link.classList.add("active");
+
+        loading(1000);
+
         if(link.getAttribute("data-section")=== 'today'){
             currentWeather.style.display = 'block';
             hourlyWeather.style.display = 'none';
@@ -237,8 +253,10 @@ const searchCity = document.getElementById("search-city");
 
 // ---------- Events ----------
 searchCity.addEventListener("submit", (e) => {
+    
     e.preventDefault();
     weatherDataDisplay();
+    loading(600);
 });
 
 

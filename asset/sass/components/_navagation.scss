@@ -21,10 +21,11 @@ nav{
             font-weight: 600;
             transition: all linear .3s;
             &.active{
-                background-color: $active-color;
+                background-color: $disabled-color;
+                color: $active-color;
             }
             &:hover{
-                background-color: $active-color;
+                background-color: $disabled-color;
             }
         }
     }

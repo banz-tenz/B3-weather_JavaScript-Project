@@ -34,111 +34,104 @@
         <a id="signup-button" href="/components/signup.html" class="btn btn-light btn-sm fw-bold">Sign Up</a>
         <button id="logoutBtn" class="btn btn-danger btn-sm" style="display: none;">Logout</button>
       </div>
-    </div>
-  </header>
-  <div class="container">
-    <!-- nav start -->
-    <nav>
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
-            <i class="fa-solid fa-cloud"></i>
-            Today
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="components/hourly.html">
-            <i class="fa-solid fa-clock"></i>
-            Hourly
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fa-solid fa-calendar"></i>
-            7-Days
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fa-solid fa-calendar-days"></i>
-            Monthly
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <!-- nav end -->
+    </header>
+    <div class="container">
+      <!-- nav start -->
+      <nav>
+        <ul class="nav flex-column">
+          <li class="nav-item" id="today">
+            <a class="nav-link active" data-section="today" aria-current="page" href="#">
+              <i class="fa-solid fa-cloud"></i>
+              Today
+            </a>
+          </li>
+          <li class="nav-item" id="hourly">
+            <a class="nav-link" href="#" data-section="hourly">
+              <i class="fa-solid fa-clock"></i>
+              Hourly
+            </a>
+          </li>
+          <li class="nav-item" id="days-forecast">
+            <a class="nav-link" href="#" data-section="days-forecast">
+              <i class="fa-solid fa-calendar"></i>
+              7-Days
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- nav end -->
 
-    <!-- main start -->
-    <main>
-      <!-- current weather section start -->
-      <section class="current-weather-section">
-        <div class="current-weather-card">
-          <div class="current-weather-header">
-            <h4 class="city-name" id="city-name">Loading</h4>
-            <button type="button" class="btn btn-outline-warning" id="add-to-favorite">
-              Add to favorite
-            </button>
+      <!-- main start -->
+      <main>
+        <!-- current weather section start -->
+        <section class="current-weather-section" id="current-weather">
+          <div class="current-weather-card">
+            <div class="current-weather-header">
+              <h4 class="city-name" id="city-name">Loading</h4>
+              <button type="button" class="btn btn-outline-warning" id="add-to-favorite">
+                Add to favorite
+              </button>
+            </div>
+
+            <div class="current-weather-content">
+              <div class="temperature-section">
+                <div class="current-temp" id="current-temp">--</div>
+                <div class="weather-condiction" id="weather-condiction">--</div>
+              </div>
+              <div class="weather-icon" id="weather-icons">
+                <img src="asset/images/icons-weather/storm.png" alt="weather-icon" id="weather-icon">
+              </div>
+            </div>
+
+            <div class="weather-details">
+              <div class="detail-item">
+                <i class="fas fa-wind"></i>
+                <div class="detail-text">
+                  <span class="detail-label">Wind</span>
+                  <span class="detail-value" id="wind-speed">-- km/h</span>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <i class="fas fa-tint"></i>
+                <div class="detail-text">
+                  <span class="detail-label">Humidity</span>
+                  <span class="detail-value" id="humidity">--%</span>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <i class="fas fa-temperature-half"></i>
+                <div class="detail-text">
+                  <span class="detail-label">Feels Like</span>
+                  <span class="detail-value" id="feels-like">--</span>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <i class="fas fa-gauge"></i>
+                <div class="detail-text">
+                  <span class="detail-label">Pressure</span>
+                  <span class="detail-value" id="pressure">-- hPa</span>
+                </div>
+              </div>
+            </div>
+            
           </div>
-
-          <div class="current-weather-content">
-            <div class="temperature-section">
-              <div class="current-temp" id="current-temp">--</div>
-              <div class="weather-condiction" id="weather-condiction">--</div>
-            </div>
-            <div class="weather-icon" id="weather-icons">
-              <img src="asset/images/icons-weather/cloudy.png" alt="weather-icon" id="weather-icon">
-            </div>
-          </div>
-
-          <div class="weather-details">
-            <div class="detail-item">
-              <i class="fas fa-wind"></i>
-              <div class="detail-text">
-                <span class="detail-label">Wind</span>
-                <span class="detail-value" id="wind-speed">-- km/h</span>
-              </div>
-            </div>
-
-            <div class="detail-item">
-              <i class="fas fa-tint"></i>
-              <div class="detail-text">
-                <span class="detail-label">Humidity</span>
-                <span class="detail-value" id="humidity">--%</span>
-              </div>
-            </div>
-
-            <div class="detail-item">
-              <i class="fas fa-temperature-half"></i>
-              <div class="detail-text">
-                <span class="detail-label">Feels Like</span>
-                <span class="detail-value" id="feels-like">--</span>
-              </div>
-            </div>
-
-            <div class="detail-item">
-              <i class="fas fa-gauge"></i>
-              <div class="detail-text">
-                <span class="detail-label">Pressure</span>
-                <span class="detail-value" id="pressure">-- hPa</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="current-weather-card">
-          <div class="weather-basetime">
-            <table class="weather-basetime-item">
-              <thead>
-                <tr>
-                  <th>Time</th>
-                  <th>Temperature</th>
-                  <th>Feels Li</th>
-                  <th>Weather Condiction</th>
-                  <th>Humidity</th>
-                </tr>
-              </thead>
-              <tbody id="weather-table">
-                <!-- <tr>
+          <div class="current-weather-card">
+            <div class="weather-basetime">
+              <table class="weather-basetime-item">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Temperature</th>
+                    <th>Feels Like</th>
+                    <th>Weather Condiction</th>
+                    <th>Humidity</th>
+                  </tr>
+                </thead>
+                <tbody id="weather-table">
+                  <!-- <tr>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -147,22 +140,70 @@
               </tbody>
             </table>
           </div>
-        </div>
-      </section>
-      <!-- current weather section end -->
-
-      <!-- hourly weather section start -->
-      <section class="current-weather-section">
-        <div class="hourly-weather-card">
-          <div class="hourly-weather-header">
-            <h2>Hourly Weather</h2>
+        </section>
+        <!-- current weather section end -->
+        
+        <!-- hourly weather section start -->
+         <section class="current-weather-section" style="display: none;" id="hourly-weather">
+          <div class="hourly-weather-card">
+            <div class="hourly-weather-header">
+              <h2>Hourly Weather</h2>
+            </div>
+            <div class="weather-hourly">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Temperature</th>
+                    <th>Feels Like</th>
+                    <th>Weather Condiction</th>
+                    <th>Humidity</th>
+                  </tr>
+                  <tbody id="hourly-table-data">
+                    
+                  </tbody>
+                </thead>
+              </table>
+            </div>
           </div>
-        </div>
-      </section>
-      <!-- hourly weather section end -->
-    </main>
-    <!-- main end -->
-  </div>
+         </section>
+        <!-- hourly weather section end -->
+
+        <!-- 7-days forecast weather section start -->
+         <section class="current-weather-section" style="display: none;" id="days-forecast-weather">
+          <div class="days-forecast-weather-card">
+            <div class="days-weather-header">
+              <h2>7-Days forecast</h2>
+            </div>
+            <div class="days-forecast-weather">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Temperature</th>
+                    <th>Feels Like</th>
+                    <th>Weather Condiction</th>
+                    <th>Humidity</th>
+                  </tr>
+                </thead>
+                <tbody id="days-forecast-table">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+         </section>
+        <!-- 7-days forecast weather section end -->
+      </main>
+      <!-- main end -->
+    </div>
+
+    <div class="overlay" id="overlay">
+        <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+        <span role="status">Loading...</span>
+      </button>
+    </div>
 
 
 

@@ -833,19 +833,19 @@ img {
   object-fit: cover
 }
 
-.weather-hourly .weather-hourly-header {
-  display: flex;
-  align-items: center;
-  gap: 12px
-}
-
-.weather-hourly .weather-hourly-header span {
-  font-size: 20px;
-  color: #a0aec0
-}
-
 /*# sourceMappingURL=style.css.map */
-  {
+nav {
+  padding: 12px;
+  padding-top: 80px;
+  background-color: #0C4E72;
+  width: 20%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+nav ul {
   list-style: none;
   gap: 12px;
 }
@@ -878,8 +878,8 @@ main {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 32px;
   height: 80vh;
   overflow-y: auto;
@@ -965,33 +965,44 @@ main .current-weather-section .current-weather-card .weather-basetime-item td,
 main .current-weather-section .current-weather-card .weather-basetime-item th {
   padding: 6px 8px;
 }
+
 main .current-weather-section {
   color: white;
 }
+
 main .current-weather-section .weather-hourly {
   width: 100%;
 }
+
 main .current-weather-section .weather-hourly table {
   border-collapse: collapse;
   width: 100%;
 }
+
 main .current-weather-section .weather-hourly table thead {
   border-bottom: 1px solid gray;
 }
-main .current-weather-section .weather-hourly table th, main .current-weather-section .weather-hourly table td {
+
+main .current-weather-section .weather-hourly table th,
+main .current-weather-section .weather-hourly table td {
   padding: 6px 8px;
 }
+
 main .current-weather-section .days-forecast-weather {
   width: 100%;
 }
+
 main .current-weather-section .days-forecast-weather table {
   border-collapse: collapse;
   width: 100%;
 }
+
 main .current-weather-section .days-forecast-weather table thead {
   border-bottom: 1px solid gray;
 }
-main .current-weather-section .days-forecast-weather table th, main .current-weather-section .days-forecast-weather table td {
+
+main .current-weather-section .days-forecast-weather table th,
+main .current-weather-section .days-forecast-weather table td {
   padding: 6px 8px;
 }
 
@@ -999,6 +1010,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  <<<<<<< HEAD
 }
 
 .overlay {
@@ -1015,11 +1027,11 @@ img {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .weather-hourly .weather-hourly-header {
@@ -1034,3 +1046,8 @@ img {
 }
 
 /*# sourceMappingURL=style.css.map */
+=======
+}
+
+/*# sourceMappingURL=style.css.map */
+>>>>>>>vanna

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Favorites - Weather App</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <h2>Weather App</h2>
+    </div>
+    <form class="d-flex" role="search" id="search-city">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="city-name"
+        id="city-name-search" />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <div class="header-action d-flex">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" value="" id="toFarinhiet" switch />
+        <label class="form-check-label" for="checkNativeSwitch"> °F </label>
+      </div>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <span id="userNameDisplay" class="text-white me-3" style="display: none;">
+          Welcome, <strong id="displayUserName"></strong>
+        </span>
+        <a id="login-button" href="/components/login.html" class="btn btn-outline-light btn-sm">Sign in</a>
+        <a id="signup-button" href="/components/signup.html" class="btn btn-light btn-sm fw-bold">Sign Up</a>
+        <button id="logoutBtn" class="btn btn-danger btn-sm" style="display: none;">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container favorites-container">
+    <a href="index.html" class="back-button">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <div class="favorites-header">
+      <h1><i class="fas fa-heart"></i> My Favorite Cities</h1>
+      <p style="color: rgba(255, 255, 255, 0.7);">Click on any city to view detailed weather information</p>
+    </div>
+
+    <div id="favoritesContent"></div>
+  </div>
+
+  <script>
+    const apiKey = "629abb62b1ae5affbd864eba93b24a22";
+
+    document.addEventListener('DOMContentLoaded', function() {
+      loadFavorites();
+      setupUserDisplay();
+      setupLogout();
+    });
+
+    function setupUserDisplay() {
+      const userNameDisplay = document.getElementById('userNameDisplay');
+      const displayUserName = document.getElementById('displayUserName');
+      const signupBtn = document.getElementById('signup-button');
+      const loginBtn = document.getElementById('login-button');
+      const logoutBtn = document.getElementById('logoutBtn');
+
+      const weatherAppUser = localStorage.getItem('weatherAppUser');
+
+      if (weatherAppUser) {
+        try {
+          const user = JSON.parse(weatherAppUser);
+          displayUserName.textContent = user.name || user.fullname || 'User';
+          userNameDisplay.style.display = 'inline-block';
+          signupBtn.style.display = 'none';
+          loginBtn.style.display = 'none';
+          logoutBtn.style.display = 'inline-block';
+        } catch (error) {
+          console.error('Error parsing user data:', error);
+        }
+      } else {
+        userNameDisplay.style.display = 'none';
+        signupBtn.style.display = 'inline-block';
+        loginBtn.style.display = 'inline-block';
+        logoutBtn.style.display = 'none';
+      }
+    }
+
+    function setupLogout() {
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+          localStorage.removeItem('weatherAppUser');
+          window.location.href = 'index.html';
+        });
+      }
+    }
+
+    function loadFavorites() {
+      const favoritesContent = document.getElementById('favoritesContent');
+      const favorites = JSON.parse(localStorage.getItem('favoriteCities')) || [];
+
+      if (favorites.length === 0) {
+        favoritesContent.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-heart-broken"></i>
+            <h2>No Favorites Yet</h2>
+            <p>Start adding your favorite cities to see them here!</p>
+            <a href="index.html" class="btn btn-warning">Go Search Cities</a>
+          </div>
+        `;
+        return;
+      }
+
+      const grid = document.createElement('div');
+      grid.className = 'favorites-grid';
+
+      favorites.forEach(city => {
+        const card = document.createElement('div');
+        card.className = 'favorite-card';
+        card.innerHTML = `
+          <div class="favorite-card-header">
+            <span class="favorite-city-name">${city}</span>
+            <button class="remove-favorite-btn" onclick="removeFavorite('${city}')">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+          <div class="favorite-card-content">
+            <div class="loading-spinner"></div>
+            <p style="margin-top: 10px; opacity: 0.7;">Loading...</p>
+          </div>
+        `;
+
+        grid.appendChild(card);
+        fetchAndDisplayWeather(city, card);
+      });
+
+      favoritesContent.appendChild(grid);
+    }
+
+    function fetchAndDisplayWeather(city, cardElement) {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error('City not found');
+          return response.json();
+        })
+        .then(data => {
+          const weatherIcon = getWeatherIcon(data.weather[0].main);
+          const content = cardElement.querySelector('.favorite-card-content');
+          content.innerHTML = `
+            <div style="font-size: 2rem; margin-bottom: 10px;">${weatherIcon}</div>
+            <div class="favorite-temp">${Math.round(data.main.temp)}°C</div>
+            <div class="favorite-weather">${data.weather[0].main}</div>
+            <div class="favorite-details">
+              <div class="detail">
+                <span class="detail-label"><i class="fas fa-wind"></i> Wind</span>
+                <span class="detail-value">${data.wind.speed} m/s</span>
+              </div>
+              <div class="detail">
+                <span class="detail-label"><i class="fas fa-tint"></i> Humidity</span>
+                <span class="detail-value">${data.main.humidity}%</span>
+              </div>
+            </div>
+          `;
+          cardElement.style.cursor = 'pointer';
+          cardElement.addEventListener('click', () => {
+            window.location.href = `index.html?city=${encodeURIComponent(city)}`;
+          });
+        })
+        .catch(error => {
+          const content = cardElement.querySelector('.favorite-card-content');
+          content.innerHTML = `
+            <p style="color: #ff6b6b;">
+              <i class="fas fa-exclamation-circle"></i><br>
+              Failed to load weather
+            </p>
+          `;
+          console.error('Error fetching weather:', error);
+        });
+    }
+
+    function getWeatherIcon(weatherCondition) {
+      const icons = {
+        'Clouds': '☁️',
+        'Clear': '☀️',
+        'Rain': '🌧️',
+        'Snow': '❄️',
+        'Thunderstorm': '⛈️',
+        'Drizzle': '🌦️',
+        'Mist': '🌫️',
+        'Smoke': '💨',
+        'Haze': '🌫️',
+        'Dust': '💨',
+        'Fog': '🌫️',
+        'Sand': '💨',
+        'Ash': '💨',
+        'Squall': '💨',
+        'Tornado': '🌪️'
+      };
+      return icons[weatherCondition] || '🌤️';
+    }
+
+    function removeFavorite(city) {
+      let favorites = JSON.parse(localStorage.getItem('favoriteCities')) || [];
+      favorites = favorites.filter(c => c !== city);
+      localStorage.setItem('favoriteCities', JSON.stringify(favorites));
+      location.reload();
+    }
+  </script>
+</body>
+
+</html>

@@ -40,7 +40,7 @@ function weatherDataDisplay() {
             return data.list
         })
         .then(dataDate =>{
-            // console.log(dataDate)
+            console.log(dataDate)
             hourlyDisplayWeather(dataDate);
             daysForecast(dataDate);
         })
@@ -206,6 +206,10 @@ const weatherTable = document.getElementById("weather-table");
 const hourlyTable = document.getElementById("hourly-table-data");
 const daysForecastTable = document.getElementById("days-forecast-table");
 const overLay = document.getElementById("overlay");
+const mobileMenu = document.getElementById("mobileMenu");
+const navBar = document.getElementById("nav-bar");
+const mainContent = document.getElementById("main-content");
+const concelMenu  = document.getElementById("concel-menu");
 
 const currentWeather = document.getElementById("current-weather");
 const hourlyWeather = document.getElementById("hourly-weather");
@@ -258,6 +262,16 @@ searchCity.addEventListener("submit", (e) => {
     weatherDataDisplay();
     loading(600);
 });
+
+mobileMenu.addEventListener("click", ()=>{
+    navBar.classList.toggle("active");
+    mainContent.classList.toggle("active");
+});
+
+concelMenu.addEventListener("click", ()=>{
+    navBar.classList.remove("active");
+    mainContent.classList.remove("active");
+})
 
 
 toFahrenheit.addEventListener("change", () => {

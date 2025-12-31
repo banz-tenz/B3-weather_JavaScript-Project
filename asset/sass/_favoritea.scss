@@ -1,0 +1,304 @@
+/* =====================
+   Variables
+===================== */
+$white: #fff;
+$glass-light: rgba(255, 255, 255, 0.15);
+$glass-dark: rgba(255, 255, 255, 0.05);
+$danger: #ff6b6b;
+$danger-hover: #ff3232;
+$bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+/* =====================
+   Mixins
+===================== */
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin glass($blur: 20px) {
+    backdrop-filter: blur($blur);
+    background: $glass-light;
+}
+
+@mixin transition($time: 0.3s) {
+    transition: all $time ease;
+}
+
+@mixin tablet {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+/* =====================
+   Base
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: $bg-gradient;
+}
+
+/* =====================
+   Header
+===================== */
+header {
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 0;
+    backdrop-filter: blur(10px);
+}
+
+/* =====================
+   Container
+===================== */
+.favorites-container {
+    min-height: calc(100vh - 100px);
+    padding: 50px 20px;
+
+    @include mobile {
+        padding: 30px 15px;
+    }
+}
+
+/* =====================
+   Back Button
+===================== */
+.back-button {
+    @include flex-center;
+    gap: 8px;
+    color: $white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    @include transition;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(-5px);
+        color: #ffc107;
+    }
+}
+
+/* =====================
+   Header Title
+===================== */
+.favorites-header {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: slideDown 0.6s ease;
+
+    h1 {
+        font-size: 3rem;
+        color: $white;
+        font-weight: 700;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    @include mobile {
+        h1 {
+            font-size: 2.2rem;
+        }
+    }
+}
+
+/* =====================
+   Grid
+===================== */
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    animation: fadeIn 0.8s ease;
+
+    @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+/* =====================
+   Card
+===================== */
+.favorite-card {
+    @include glass;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    padding: 30px;
+    color: $white;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    @include transition(0.4s);
+
+    &:hover {
+        transform: translateY(-15px) scale(1.02);
+        background: linear-gradient(135deg, rgba(255, 255, 255, .25), rgba(255, 255, 255, .1));
+    }
+
+    @include mobile {
+        padding: 20px;
+    }
+}
+
+/* =====================
+   Card Header
+===================== */
+.favorite-card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .favorite-city-name {
+        font-size: 1.8rem;
+        font-weight: 700;
+
+        @include mobile {
+            font-size: 1.5rem;
+        }
+    }
+
+    .remove-favorite-btn {
+        @include flex-center;
+        gap: 6px;
+        background: $danger;
+        border: 2px solid rgba($danger, 0.5);
+        padding: 10px 15px;
+        border-radius: 10px;
+        color: $white;
+        font-weight: 600;
+        cursor: pointer;
+        @include transition;
+
+        &:hover {
+            background: $danger-hover;
+            transform: scale(1.08);
+        }
+    }
+}
+
+/* =====================
+   Card Content
+===================== */
+.favorite-card-content {
+    text-align: center;
+
+    .weather-emoji {
+        font-size: 3.5rem;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .favorite-temp {
+        font-size: 2.8rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #fff, #f0f0f0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        @include mobile {
+            font-size: 2.2rem;
+        }
+    }
+
+    .favorite-weather {
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+}
+
+/* =====================
+   Details===================== */    
+.favorite-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+
+    @include mobile {
+        grid-template-columns: 1fr;
+    }
+
+    .detail {
+        background: rgba(255, 255, 255, 0.12);
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        @include transition;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-3px);
+        }
+
+        .detail-label {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+    }
+    }   
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}

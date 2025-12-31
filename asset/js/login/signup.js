@@ -123,17 +123,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!password) {
             showError('Password is required');
             return false;
-        } else if (password.length < 8) {
-            showError('Password must be at least 8 characters');
+        } else if (password.length < 6) {
+            showError('Password must be at least 6 characters');
             return false;
         } else if (!/(?=.*[a-z])/.test(password)) {
             showError('Password must contain at least one lowercase letter');
-            return false;
-        } else if (!/(?=.*[A-Z])/.test(password)) {
-            showError('Password must contain at least one uppercase letter');
-            return false;
-        } else if (!/(?=.*\d)/.test(password)) {
-            showError('Password must contain at least one number');
             return false;
         }
 
@@ -164,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = this.value;
         let strength = 0;
 
-        if (password.length >= 8) strength++;
+        if (password.length >= 6) strength++;
         if (/[a-z]/.test(password)) strength++;
         if (/[A-Z]/.test(password)) strength++;
         if (/\d/.test(password)) strength++;

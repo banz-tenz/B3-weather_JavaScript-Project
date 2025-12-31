@@ -190,6 +190,7 @@ function displayWeatherData(data) {
     windSpeed.textContent = `${data.wind.speed} m/s`;
     humidity.textContent = `${data.main.humidity} %`;
     pressure.textContent = `${data.main.pressure} hPa`;
+    updateFavoriteButtonState(cityName.textContent);
 }
 
 // ---------- DOM ----------
@@ -290,7 +291,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const signupBtn = document.getElementById('signup-button');
     const loginBtn = document.getElementById('login-button');
     const logoutBtn = document.getElementById('logoutBtn');
-    const addFavoriteBtn = document.getElementById('addFavoriteBtn');
+    const addFavoriteBtn = document.getElementById('add-to-favorite');
+    const favoritesBtn = document.getElementById('favoritesBtn');
 
     // Check if user is logged in
     const weatherAppUser = localStorage.getItem('weatherAppUser');
@@ -305,6 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
             signupBtn.style.display = 'none';
             loginBtn.style.display = 'none';
             logoutBtn.style.display = 'inline-block';
+            favoritesBtn.style.display = 'inline-block';
             // Show favorite button when logged in
         } catch (error) {
             console.error('Error parsing user data:', error);
@@ -315,6 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
         signupBtn.style.display = 'inline-block';
         loginBtn.style.display = 'inline-block';
         logoutBtn.style.display = 'none';
+        favoritesBtn.style.display = 'none';
         // Hide favorite button when not logged in
     }
 
@@ -326,6 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
             signupBtn.style.display = 'inline-block';
             loginBtn.style.display = 'inline-block';
             logoutBtn.style.display = 'none';
+            favoritesBtn.style.display = 'none';
             // Redirect to login page
             window.location.href = '../index.html';
         });
@@ -351,26 +356,30 @@ function addToFavorites(city) {
     if (!favorites.includes(city)) {
         favorites.push(city);
         localStorage.setItem('favoriteCities', JSON.stringify(favorites));
-        alert(`${city} added to favorites!`);
         updateFavoriteButtonState(city);
     } else {
         favorites = favorites.filter(c => c !== city);
         localStorage.setItem('favoriteCities', JSON.stringify(favorites));
-        alert(`${city} removed from favorites!`);
         updateFavoriteButtonState(city);
     }
 }
 
 // Update favorite button appearance
 function updateFavoriteButtonState(city) {
-    const addFavoriteBtn = document.getElementById('addFavoriteBtn');
+    const addFavoriteBtn = document.getElementById('add-to-favorite');
     let favorites = JSON.parse(localStorage.getItem('favoriteCities')) || [];
     
     if (favorites.includes(city)) {
         addFavoriteBtn.classList.add('favorite-active');
         addFavoriteBtn.innerHTML = '<i class="fas fa-heart"></i> Remove from favorite';
+        addFavoriteBtn.style.background = '#ff6b6b';
+        addFavoriteBtn.style.borderColor = '#ff6b6b';
+        addFavoriteBtn.style.color = 'white';
     } else {
         addFavoriteBtn.classList.remove('favorite-active');
         addFavoriteBtn.innerHTML = '<i class="fas fa-heart"></i> Add to favorite';
+        addFavoriteBtn.style.background = 'transparent';
+        addFavoriteBtn.style.borderColor = '#ffc107';
+        addFavoriteBtn.style.color = '#ffc107';
     }
 }

@@ -13,6 +13,9 @@
 
 <body>
   <header>
+    <div class="toggle" id="mobileMenu">
+      <i class="fa-solid fa-bars"></i>
+    </div>
     <div class="logo">
       <h2>Weather App</h2>
     </div>
@@ -38,9 +41,9 @@
         <button id="logoutBtn" class="btn btn-danger btn-sm" style="display: none;">Logout</button>
       </div>
     </header>
-    <div class="container">
-      <!-- nav start -->
-      <nav>
+    <!-- nav start -->
+      <nav id="nav-bar">
+        <i class="fa-solid fa-x" id="concel-menu"></i>
         <ul class="nav flex-column">
           <li class="nav-item" id="today">
             <a class="nav-link active" data-section="today" aria-current="page" href="#">
@@ -57,15 +60,18 @@
           <li class="nav-item" id="days-forecast">
             <a class="nav-link" href="#" data-section="days-forecast">
               <i class="fa-solid fa-calendar"></i>
-              7-Days
+              5-Days
             </a>
           </li>
         </ul>
       </nav>
       <!-- nav end -->
+       
 
-      <!-- main start -->
-      <main>
+      
+
+    <!-- main start -->
+    <main id="main-content">
         <!-- current weather section start -->
         <section class="current-weather-section" id="current-weather">
           <div class="current-weather-card">
@@ -176,7 +182,7 @@
          <section class="current-weather-section" style="display: none;" id="days-forecast-weather">
           <div class="days-forecast-weather-card">
             <div class="days-weather-header">
-              <h2>7-Days forecast</h2>
+              <h2>5-Days forecast</h2>
             </div>
             <div class="days-forecast-weather">
               <table>
@@ -197,9 +203,9 @@
           </div>
          </section>
         <!-- 7-days forecast weather section end -->
-      </main>
-      <!-- main end -->
-    </div>
+    </main>
+    <!-- main end -->
+
 
     <div class="overlay" id="overlay">
         <button class="btn btn-primary" type="button" disabled>

@@ -8,6 +8,9 @@
 .toggle{
     display: none;
 }
+#concel-menu {
+    display: none;
+}
 @import 'components/header';
 @import 'components/navagation';
 @import 'components/currentWeather';

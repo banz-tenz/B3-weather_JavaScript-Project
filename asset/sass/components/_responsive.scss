@@ -51,20 +51,20 @@
     form {
         position: fixed;
         top: 100px;
-        left: 80px;
+        left: 64px;
         // border: 2px solid grey;
         box-shadow: 0 0 8px grey;
     }
     main {
-        // position: static;
         width: 428px;
-        // background-color: red;
         margin: 0;
         left: 0;
         top: 30px;
+        border-radius: 4px;
     }
     section {
         padding: 0;
+        border-radius: 4px;
     }
 
     nav.active {
@@ -74,12 +74,9 @@
     main.active{
         left: 0;
     }
-    // nav {
-    //     width: 50%;
-    //     z-index: 99999;
-    //     left: 0;
-    // }
+
     #concel-menu{
+        display: block;
         position: absolute;
         top: 20px;
         left: 10px;

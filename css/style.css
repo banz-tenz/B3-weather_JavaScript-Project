@@ -727,6 +727,10 @@ body {
   display: none;
 }
 
+#concel-menu {
+  display: none;
+}
+
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1002,7 +1006,7 @@ img {
   form {
     position: fixed;
     top: 100px;
-    left: 80px;
+    left: 64px;
     -webkit-box-shadow: 0 0 8px grey;
             box-shadow: 0 0 8px grey;
   }
@@ -1011,9 +1015,11 @@ img {
     margin: 0;
     left: 0;
     top: 30px;
+    border-radius: 4px;
   }
   section {
     padding: 0;
+    border-radius: 4px;
   }
   nav.active {
     width: 50%;
@@ -1023,6 +1029,7 @@ img {
     left: 0;
   }
   #concel-menu {
+    display: block;
     position: absolute;
     top: 20px;
     left: 10px;

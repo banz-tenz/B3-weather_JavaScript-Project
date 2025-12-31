@@ -43,7 +43,7 @@ function weatherDataDisplay() {
             // console.log(dataDate)
             hourlyDisplayWeather(dataDate);
             daysForecast(dataDate);
-        })
+        });
 }
 
 function daysForecast(list) {

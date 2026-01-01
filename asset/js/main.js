@@ -215,6 +215,7 @@ const mobileMenu = document.getElementById("mobileMenu");
 const navBar = document.getElementById("nav-bar");
 const mainContent = document.getElementById("main-content");
 const concelMenu  = document.getElementById("concel-menu");
+const overlayMenu = document.getElementById("overlay-menu");
 
 const currentWeather = document.getElementById("current-weather");
 const hourlyWeather = document.getElementById("hourly-weather");
@@ -271,11 +272,19 @@ searchCity.addEventListener("submit", (e) => {
 mobileMenu.addEventListener("click", ()=>{
     navBar.classList.toggle("active");
     mainContent.classList.toggle("active");
+    overlayMenu.classList.toggle("active");
 });
 
 concelMenu.addEventListener("click", ()=>{
     navBar.classList.remove("active");
     mainContent.classList.remove("active");
+    overlayMenu.classList.remove("active");
+})
+
+overlayMenu.addEventListener("click", ()=>{
+    navBar.classList.remove("active");
+    mainContent.classList.remove("active");
+    overlayMenu.classList.remove("active");
 })
 
 // Auto-load city from URL (e.g. coming from favorites.html)

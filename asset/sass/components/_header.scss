@@ -4,7 +4,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: $backroun;
+    background-color: $header-background-color;
     padding: 12px 20px;
     color: white;
     position: fixed;
@@ -12,6 +12,12 @@ header {
     z-index: 99;
     width: 100%;
     border-bottom: 1px solid white;
+    & .logo{
+        & h2 {
+            color: white;
+            display: block;
+        }
+    }
     & form{
         width: 420px;
         display: flex;

@@ -24,6 +24,7 @@
         transition: all linear .3s;
     }
     nav{
+        z-index: 999;
         padding-top: 90px;
         left: -100%;
         width: 25%;
@@ -50,7 +51,7 @@
     }
     form {
         position: fixed;
-        top: 100px;
+        top: 80px;
         left: 64px;
         // border: 2px solid grey;
         box-shadow: 0 0 8px grey;
@@ -82,5 +83,13 @@
         left: 10px;
         color: white;
         font-size: 24px;
+    }
+    th{
+        font-size: 14px;
+        font-weight: 500;
+    }
+    td{
+        font-size: 12px;
+        font-weight: 500;
     }
 }

@@ -12,6 +12,11 @@ header {
     z-index: 99;
     width: 100%;
     border-bottom: 1px solid white;
+    & .logo{
+        & h2 {
+            color: white;
+        }
+    }
     & form{
         width: 420px;
         display: flex;

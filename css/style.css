@@ -1204,6 +1204,10 @@ header {
   width: 100%;
   border-bottom: 1px solid white;
 }
+header .logo h2 {
+  color: white;
+  display: block;
+}
 header form {
   width: 420px;
   display: -webkit-box;
@@ -1234,7 +1238,6 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
 }
 nav ul {
   list-style: none;
@@ -1459,6 +1462,7 @@ img {
     transition: all linear 0.3s;
   }
   nav {
+    z-index: 999;
     padding-top: 90px;
     left: -100%;
     width: 25%;

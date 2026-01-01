@@ -1,25 +1,23 @@
 @use "mixin";
 @import "variable";
 
-
+.weather-body{
+    background-color: $body-background-color;
+}
 
 main{
     padding-top: 40px;
     width: 100%;
     margin-left: 20%;
-    position: relative;
+    // position: relative;
     display: flex;
     flex-direction: column;
     gap: 32px;
     height: 80vh;
-    // background-color: red;
     overflow-y: auto;
-    // & section {
-    //     transition: all linear 3s;
-    // }
     & .current-weather-section{
         width: 100%;
-        background: $secondary-color;
+        background: $card-background-color;
         display: flex;
         flex-direction: column;
         gap: 32px;
@@ -29,12 +27,12 @@ main{
         
         & .current-weather-card{
             width: 100%;
-            color: white;
+            color: $text-color;
             & .current-weather-header{
                 width: 100%;
                 @include space-between();
                 & .city-name{
-                    color: white;
+                    color: $text-color;
                 }
             }
             & .current-temp{
@@ -83,7 +81,7 @@ main{
         
     }
     & .current-weather-section{
-        color: white;
+        color: $text-color;
         & .weather-hourly{
             width: 100%;
             & table {
@@ -134,4 +132,22 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.overlay-menu{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(200, 200, 200, 0.822);
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition;
+}
+
+.overlay-menu.active{
+    
+    z-index: 98;
+    opacity: 1;
+    visibility: visible;
+    
 }

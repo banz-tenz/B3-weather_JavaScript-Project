@@ -22,7 +22,7 @@ $boxshadow-1: 0 4px 6px rgba(0, 0, 0, 0.1);
 $boxshadow-2: 0 10px 15px rgba(0, 0, 0, 0.1);
 $boxshadow-3: 0 20px 25px rgba(0, 0, 0, 0.1);    
 $border-color: #E2E8F0;
-$text-color: #1A202C;
+// $text-color: #1A202C;
 $primary-color: #0C4E72;
 $secondary-color: #2B6CB0;  
 $accent-color: #38B2AC;
@@ -42,3 +42,12 @@ $breakpoint-md: 768px;
 $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 $breakpoint-xxl: 1400px;
+
+/* Weather App Color Variables */
+$card-background-color: #ffffff;      // Weather info cards
+$body-background-color: #eaf6ff;      // Light sky blue
+$nav-hover: #4fa3ff;                  // Nav hover color
+$nav-active: #1e88e5;                 // Active nav item
+$header-background-color: #2196f3;    // Header background
+$text-color: #2c3e50;                 // Main text
+$nav-hover-color-text: #ffffff;  

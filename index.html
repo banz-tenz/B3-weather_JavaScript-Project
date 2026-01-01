@@ -40,7 +40,7 @@
         <a id="signup-button" href="/components/signup.html" class="btn btn-light btn-sm fw-bold">Sign Up</a>
         <button id="logoutBtn" class="btn btn-danger btn-sm" style="display: none;">Logout</button>
       </div>
-    </header>
+  </header>
     <!-- nav start -->
       <nav id="nav-bar">
         <i class="fa-solid fa-x" id="concel-menu"></i>
@@ -61,6 +61,12 @@
             <a class="nav-link" href="#" data-section="days-forecast">
               <i class="fa-solid fa-calendar"></i>
               5-Days
+            </a>
+          </li>
+          <li class="nav-item" id="days-forecast">
+            <a class="nav-link" href="favorites.html" data-section="days-forecast">
+              <i class="fa-solid fa-bookmark"></i>
+              Favorite
             </a>
           </li>
         </ul>
@@ -216,30 +222,8 @@
 
 
 
-
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyAL56dMC4liwJbNw8n_awS4Toh_i-7Xddg",
-      authDomain: "weather-app-77a84.firebaseapp.com",
-      projectId: "weather-app-77a84",
-      storageBucket: "weather-app-77a84.firebasestorage.app",
-      messagingSenderId: "819337201786",
-      appId: "1:819337201786:web:698cc9332cdacd89b053c3",
-      measurementId: "G-96LMFGYG75",
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
+    <div class="overlay-menu" id="overlay-menu"></div>
+  
   <script src="asset/js/main.js"></script>
 </body>
 

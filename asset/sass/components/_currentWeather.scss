@@ -133,3 +133,21 @@ img {
     justify-content: center;
     align-items: center;
 }
+
+.overlay-menu{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(200, 200, 200, 0.822);
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition;
+}
+
+.overlay-menu.active{
+    
+    z-index: 98;
+    opacity: 1;
+    visibility: visible;
+    
+}

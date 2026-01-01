@@ -5,15 +5,16 @@
     margin: 0;
     padding: 0;
 }
-.container{
-    display: flex;
-    padding: 20px 0;
-    margin: 0;
+.toggle{
+    display: none;
+}
+#concel-menu {
+    display: none;
 }
 @import 'components/header';
 @import 'components/navagation';
 @import 'components/currentWeather';
-@import 'components/hourly';
+@import 'components/responsive';
 
 
 

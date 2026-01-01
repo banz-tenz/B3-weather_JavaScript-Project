@@ -21,48 +21,48 @@ function weatherDataDisplay() {
     const urlForecastTime = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
 
     fetch(urlcurrentWeather)
-      .then((response) => {
-        if (!response.ok) alert("city not found");
-        return response.json();
-      })
-      .then((data) => {
-        displayWeatherData(data);
-      })
+        .then((response) => {
+            if (!response.ok) alert("city not found");
+            return response.json();
+        })
+        .then((data) => {
+            displayWeatherData(data);
+        })
 
 
-    
+
     fetch(urlForecastTime)
-        .then(res =>{
+        .then(res => {
             return res.json()
         })
         .then(data => {
             displayTimebaseData(data.list)
             return data.list
         })
-        .then(dataDate =>{
+        .then(dataDate => {
             // console.log(dataDate)
             hourlyDisplayWeather(dataDate);
             daysForecast(dataDate);
-        })
+        });
 }
 
 function daysForecast(list) {
-    
-    daysForecastTable.innerHTML = ""; 
 
-    const dates = {}; 
+    daysForecastTable.innerHTML = "";
+
+    const dates = {};
 
     list.forEach(item => {
         const date = new Date(item.dt_txt);
-        const dateStr = date.toISOString().split('T')[0]; 
+        const dateStr = date.toISOString().split('T')[0];
 
         if (!dates[dateStr]) {
-            
+
             dates[dateStr] = item;
         }
     });
 
-    
+
     const dailyForecastArray = Object.values(dates);
 
     dailyForecastArray.forEach(forecast => {
@@ -81,18 +81,17 @@ function daysForecast(list) {
 }
 
 
-function hourlyDisplayWeather(list){
+function hourlyDisplayWeather(list) {
     const today = new Date().getDate();
     hourlyTable.innerHTML = "";
-    // console.log(today)
 
-    list.forEach(item =>{
+    list.forEach(item => {
         const date = new Date(item.dt_txt);
         const dateDay = date.getDate();
 
-        if(today !== dateDay) {
+        if (today !== dateDay) {
             return;
-        }else{
+        } else {
             const hour = date.getHours();
             const temp = Math.round(item.main.temp);
             const feels_like = Math.round(item.main.feels_like);
@@ -190,9 +189,12 @@ function displayWeatherData(data) {
     windSpeed.textContent = `${data.wind.speed} m/s`;
     humidity.textContent = `${data.main.humidity} %`;
     pressure.textContent = `${data.main.pressure} hPa`;
-    
-    // Update favorite button state for the new city
     updateFavoriteButtonState(cityName.textContent);
+}
+
+function getCityOnly(cityText) {
+    if (!cityText) return "";
+    return String(cityText).split(",")[0].trim();
 }
 
 // ---------- DOM ----------
@@ -209,25 +211,30 @@ const weatherTable = document.getElementById("weather-table");
 const hourlyTable = document.getElementById("hourly-table-data");
 const daysForecastTable = document.getElementById("days-forecast-table");
 const overLay = document.getElementById("overlay");
+const mobileMenu = document.getElementById("mobileMenu");
+const navBar = document.getElementById("nav-bar");
+const mainContent = document.getElementById("main-content");
+const concelMenu  = document.getElementById("concel-menu");
+const overlayMenu = document.getElementById("overlay-menu");
 
 const currentWeather = document.getElementById("current-weather");
 const hourlyWeather = document.getElementById("hourly-weather");
 const daysForecastWeather = document.getElementById("days-forecast-weather");
 
-function loading(time){
+function loading(time) {
     overLay.classList.add("loading");
 
-    setTimeout(()=>{
+    setTimeout(() => {
         overLay.classList.remove("loading");
-    },time);
+    }, time);
 }
 
 const listLinks = document.querySelectorAll("li a");
-listLinks.forEach(link =>{
+listLinks.forEach(link => {
     // link.classList.remove("active");
-    link.addEventListener("click",()=>{
+    link.addEventListener("click", () => {
 
-        listLinks.forEach(item =>{
+        listLinks.forEach(item => {
             item.classList.remove("active");
         });
 
@@ -235,16 +242,16 @@ listLinks.forEach(link =>{
 
         loading(1000);
 
-        if(link.getAttribute("data-section")=== 'today'){
+        if (link.getAttribute("data-section") === 'today') {
             currentWeather.style.display = 'block';
             hourlyWeather.style.display = 'none';
             daysForecastWeather.style.display = 'none';
-        }else if(link.getAttribute("data-section")=== 'hourly'){
+        } else if (link.getAttribute("data-section") === 'hourly') {
             currentWeather.style.display = 'none';
             hourlyWeather.style.display = 'block';
             daysForecastWeather.style.display = 'none';
         }
-        else if(link.getAttribute("data-section")=== 'days-forecast'){
+        else if (link.getAttribute("data-section") === 'days-forecast') {
             currentWeather.style.display = 'none';
             hourlyWeather.style.display = 'none';
             daysForecastWeather.style.display = 'block';
@@ -256,24 +263,64 @@ const searchCity = document.getElementById("search-city");
 
 // ---------- Events ----------
 searchCity.addEventListener("submit", (e) => {
-    
+
     e.preventDefault();
     weatherDataDisplay();
     loading(600);
 });
 
+mobileMenu.addEventListener("click", ()=>{
+    navBar.classList.toggle("active");
+    mainContent.classList.toggle("active");
+    overlayMenu.classList.toggle("active");
+});
+
+concelMenu.addEventListener("click", ()=>{
+    navBar.classList.remove("active");
+    mainContent.classList.remove("active");
+    overlayMenu.classList.remove("active");
+})
+
+overlayMenu.addEventListener("click", ()=>{
+    navBar.classList.remove("active");
+    mainContent.classList.remove("active");
+    overlayMenu.classList.remove("active");
+})
+
+// Auto-load city from URL (e.g. coming from favorites.html)
+document.addEventListener('DOMContentLoaded', function () {
+    const params = new URLSearchParams(window.location.search);
+    const cityParam = params.get('city');
+    if (!cityParam) return;
+    // Ensure Today section is visible when coming from favorites
+    const todayLink = document.querySelector("a[data-section='today']");
+    if (todayLink) {
+        listLinks.forEach(item => item.classList.remove("active"));
+        todayLink.classList.add("active");
+    }
+
+    if (currentWeather) currentWeather.style.display = 'block';
+    if (hourlyWeather) hourlyWeather.style.display = 'none';
+    if (daysForecastWeather) daysForecastWeather.style.display = 'none';
+    const inputCity = document.getElementById("city-name-search");
+    if (!inputCity) return;
+
+    inputCity.value = cityParam;
+    weatherDataDisplay();
+    loading(600);
+});
 
 toFahrenheit.addEventListener("change", () => {
-    if (toFahrenheit.checked && (tempC &&feelsLikeC !== 0) ) {
+    if (toFahrenheit.checked && (tempC && feelsLikeC !== 0)) {
         currentTemp.textContent = `${convertToFahrenheit(tempC)} °F`;
         feelsLike.textContent = `${convertToFahrenheit(feelsLikeC)} °F`;
-    } else if(tempC&&feelsLikeC !== 0){
+    } else if (tempC && feelsLikeC !== 0) {
         currentTemp.textContent = `${tempC} °C`;
         feelsLike.textContent = `${feelsLikeC} °C`;
     }
 });
 // User authentication & Favorites
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const userNameDisplay = document.getElementById('userNameDisplay');
     const displayUserName = document.getElementById('displayUserName');
     const signupBtn = document.getElementById('signup-button');
@@ -284,12 +331,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Check if user is logged in
     const weatherAppUser = localStorage.getItem('weatherAppUser');
-    
+
     if (weatherAppUser) {
         try {
             const user = JSON.parse(weatherAppUser);
             // Show user info and hide login button
-            
+
             displayUserName.textContent = user.name || user.fullname || 'User';
             userNameDisplay.style.display = 'inline-block';
             signupBtn.style.display = 'none';
@@ -312,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Logout functionality
     if (logoutBtn) {
-        logoutBtn.addEventListener('click', function() {
+        logoutBtn.addEventListener('click', function () {
             localStorage.removeItem('weatherAppUser');
             userNameDisplay.style.display = 'none';
             signupBtn.style.display = 'inline-block';
@@ -326,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Favorite button functionality
     if (addFavoriteBtn) {
-        addFavoriteBtn.addEventListener('click', function() {
+        addFavoriteBtn.addEventListener('click', function () {
             const cityName = document.getElementById('city-name').textContent;
             if (cityName && cityName !== 'Loading') {
                 addToFavorites(cityName);
@@ -339,16 +386,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Add city to favorites
 function addToFavorites(city) {
+    const cityOnly = getCityOnly(city);
     let favorites = JSON.parse(localStorage.getItem('favoriteCities')) || [];
-    
-    if (!favorites.includes(city)) {
-        favorites.push(city);
+
+    if (!favorites.includes(cityOnly)) {
+        favorites.push(cityOnly);
         localStorage.setItem('favoriteCities', JSON.stringify(favorites));
-        updateFavoriteButtonState(city);
+        updateFavoriteButtonState(cityOnly);
     } else {
-        favorites = favorites.filter(c => c !== city);
+        favorites = favorites.filter(c => c !== cityOnly);
         localStorage.setItem('favoriteCities', JSON.stringify(favorites));
-        updateFavoriteButtonState(city);
+        updateFavoriteButtonState(cityOnly);
     }
 }
 
@@ -356,8 +404,9 @@ function addToFavorites(city) {
 function updateFavoriteButtonState(city) {
     const addFavoriteBtn = document.getElementById('add-to-favorite');
     let favorites = JSON.parse(localStorage.getItem('favoriteCities')) || [];
-    
-    if (favorites.includes(city)) {
+    const cityOnly = getCityOnly(city);
+
+    if (favorites.includes(cityOnly)) {
         addFavoriteBtn.classList.add('favorite-active');
         addFavoriteBtn.innerHTML = '<i class="fas fa-heart"></i> Remove from favorite';
         addFavoriteBtn.style.background = '#ff6b6b';

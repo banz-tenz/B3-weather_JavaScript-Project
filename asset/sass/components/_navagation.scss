@@ -3,12 +3,13 @@
 nav{
     padding: 12px;
     padding-top: 80px;
-    background-color:$backroun;
+    background-color:$header-background-color;
     width: 20%;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 999;
     // border-top: 1px solid white;
     & ul{
         list-style: none;
@@ -21,11 +22,11 @@ nav{
             font-weight: 600;
             transition: all linear .3s;
             &.active{
-                background-color: $disabled-color;
-                color: $active-color;
+                background-color: $nav-hover;
+                color: $nav-hover-color-text;
             }
             &:hover{
-                background-color: $disabled-color;
+                background-color: $nav-hover;
             }
         }
     }

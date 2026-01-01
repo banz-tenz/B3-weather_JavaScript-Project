@@ -47,7 +47,7 @@ $bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     box-sizing: border-box;
 }
 
-body {
+.favorite-body {
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: $bg-gradient;

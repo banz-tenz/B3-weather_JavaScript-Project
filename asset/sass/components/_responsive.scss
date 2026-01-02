@@ -124,3 +124,15 @@
         display: block;
     }
 }
+
+@media (max-width:400px){
+    form {
+        left: 48px;
+    }
+}
+
+@media (max-width:390px){
+    form {
+        left: 38px;
+    }
+}

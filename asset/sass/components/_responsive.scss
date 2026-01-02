@@ -1,6 +1,6 @@
 
 
-@media (max-width:840px){
+@media (max-width:890px){
 
     .toggle{
         display: block;
@@ -25,7 +25,7 @@
     }
     nav{
         z-index: 999;
-        padding-top: 90px;
+        padding-top: 100px;
         left: -100%;
         width: 25%;
     }
@@ -41,6 +41,24 @@
     }
     .current-weather-section{
         padding: 0;
+    }
+    #concel-menu{
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        color: white;
+        font-size: 24px;
+    }
+    .logo-menu h2{
+        display: none;
+    }
+
+}
+
+@media (max-width:810px){
+    .btn .fav-text{
+        display: none;
     }
 }
 
@@ -91,5 +109,30 @@
     td{
         font-size: 12px;
         font-weight: 500;
+        width: 140px;
+    }
+    .logo{
+        display: none;
+    }
+
+    .logo-menu h2{
+        color: white;
+        font-size: 16px;
+        position: absolute;
+        top: 20px;
+        left: 60px;
+        display: block;
+    }
+}
+
+@media (max-width:400px){
+    form {
+        left: 48px;
+    }
+}
+
+@media (max-width:390px){
+    form {
+        left: 38px;
     }
 }

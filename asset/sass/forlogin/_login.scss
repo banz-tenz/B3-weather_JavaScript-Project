@@ -59,10 +59,11 @@ body {
 
 // Header
 .login-header {
-  background: linear-gradient(135deg, $primary-start 0%, $primary-end 100%);
+  background: linear-gradient(135deg, $primary-gradient-start 0%, $primary-gradient-end 100%);
+  background-attachment: fixed;
   color: $white;
   padding: 40px 30px;
-  text-align: center;
+
   position: relative;
 
   .home-link {
@@ -214,7 +215,8 @@ body {
   .login-button {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, $primary-start 0%, $primary-end 100%);
+    background: linear-gradient(135deg, $primary-gradient-start 0%, $primary-gradient-end 100%);
+  background-attachment: fixed;
     color: $white;
     border: none;
     border-radius: 8px;

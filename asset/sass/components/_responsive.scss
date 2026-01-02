@@ -24,6 +24,7 @@
         transition: all linear .3s;
     }
     nav{
+        z-index: 999;
         padding-top: 90px;
         left: -100%;
         width: 25%;

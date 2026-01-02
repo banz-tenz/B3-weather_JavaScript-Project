@@ -1114,6 +1114,11 @@ header {
   border-bottom: 1px solid #fff
 }
 
+header .logo h2 {
+  color: #fff;
+  display: block
+}
+
 header form {
   width: 420px;
   display: flex;
@@ -1141,8 +1146,7 @@ nav {
   height: 100vh;
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: 999
+  left: 0
 }
 
 nav ul {
@@ -1365,6 +1369,7 @@ img {
   }
 
   nav {
+    z-index: 999;
     padding-top: 90px;
     left: -100%;
     width: 25%
@@ -1444,7 +1449,7 @@ img {
 }
 
 /*# sourceMappingURL=style.css.map */
-.3s;
+;
 }
 
 nav ul .nav-link.active {
@@ -1655,6 +1660,7 @@ img {
   }
 
   nav {
+    z-index: 999;
     padding-top: 90px;
     left: -100%;
     width: 25%;

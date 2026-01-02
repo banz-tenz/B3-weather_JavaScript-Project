@@ -1138,6 +1138,278 @@ header .header-action {
   gap: 20px
 }
 
+#map-weather {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .1)
+}
+
+.map-weather-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden
+}
+
+.map-weather-header {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: #fff;
+  padding: 20px;
+  text-align: center
+}
+
+.map-weather-header h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 600
+}
+
+.map-weather-header p {
+  margin: 0;
+  opacity: .9;
+  font-size: 14px
+}
+
+.map-container {
+  position: relative;
+  background: #f5f5f5
+}
+
+#weather-map {
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .1)
+}
+
+.map-controls {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-top: none
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: 20px
+}
+
+.search-container .search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #f8f9fa;
+  transition: all .3s ease
+}
+
+.search-container .search-input:focus {
+  outline: none;
+  border-color: #2196f3;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, .1)
+}
+
+.search-container .search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1)
+}
+
+.search-container .search-results .search-result-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color .2s ease
+}
+
+.search-container .search-results .search-result-item:hover {
+  background: #f8f9fa
+}
+
+.search-container .search-results .search-result-item:last-child {
+  border-bottom: none
+}
+
+.search-container .search-results .search-result-item strong {
+  color: #2196f3;
+  display: block;
+  margin-bottom: 4px
+}
+
+.search-container .search-results .search-result-item .text-muted {
+  font-size: 12px;
+  color: #666
+}
+
+.control-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap
+}
+
+.control-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all .3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, .3)
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, .4)
+}
+
+.control-btn i {
+  font-size: 16px
+}
+
+.map-layers {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap
+}
+
+.layer-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background: #f8f9fa;
+  transition: all .3s ease
+}
+
+.layer-option:hover {
+  border-color: #2196f3;
+  background: #e3f2fd
+}
+
+.layer-option input[type=radio] {
+  accent-color: #2196f3
+}
+
+.layer-option input[type=radio]:checked+span {
+  color: #2196f3;
+  font-weight: 500
+}
+
+.layer-option span {
+  font-size: 14px;
+  color: #333
+}
+
+.temperature-legend {
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0
+}
+
+.temperature-legend h6 {
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600
+}
+
+.temperature-legend .temp-guide {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px
+}
+
+.temperature-legend .temp-guide .temp-item {
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+
+.temperature-legend .temp-guide .temp-item .temp-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, .1)
+}
+
+.temperature-legend .temp-guide .temp-item .temp-color.hot {
+  background: #ff6b6b
+}
+
+.temperature-legend .temp-guide .temp-item .temp-color.warm {
+  background: #ffd93d
+}
+
+.temperature-legend .temp-guide .temp-item .temp-color.mild {
+  background: #6bcf7f
+}
+
+.temperature-legend .temp-guide .temp-item .temp-color.cold {
+  background: #4ecdc4
+}
+
+.temperature-legend .temp-guide .temp-item span {
+  font-size: 12px;
+  color: #666
+}
+
+.help-text {
+  background: #e3f2fd;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+  font-size: 13px
+}
+
+.help-text strong {
+  color: #1976d2
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #2196f3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+.weather-marker-icon {
+  background: rgba(0, 0, 0, 0) !important;
+  border: none !important
+}
+
 nav {
   padding: 12px;
   padding-top: 80px;
@@ -1449,7 +1721,99 @@ img {
 }
 
 /*# sourceMappingURL=style.css.map */
-;
+emp-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.temperature-legend .temp-guide .temp-item .temp-color.hot {
+  background: #ff6b6b;
+}
+
+.temperature-legend .temp-guide .temp-item .temp-color.warm {
+  background: #ffd93d;
+}
+
+.temperature-legend .temp-guide .temp-item .temp-color.mild {
+  background: #6bcf7f;
+}
+
+.temperature-legend .temp-guide .temp-item .temp-color.cold {
+  background: #4ecdc4;
+}
+
+.temperature-legend .temp-guide .temp-item span {
+  font-size: 12px;
+  color: #666;
+}
+
+/* =========================
+   Help Text
+========================= */
+.help-text {
+  background: #e3f2fd;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+  font-size: 13px;
+}
+
+.help-text strong {
+  color: #1976d2;
+}
+
+/* =========================
+   Loading Spinner
+========================= */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #2196f3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   Misc
+========================= */
+.weather-marker-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Weather App Color Variables */
+nav {
+  padding: 12px;
+  padding-top: 80px;
+  background-color: #2196f3;
+  width: 20%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+nav ul {
+  list-style: none;
+  gap: 12px;
+}
+
+nav ul .nav-link {
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+  transition: all linear 0.3s;
 }
 
 nav ul .nav-link.active {

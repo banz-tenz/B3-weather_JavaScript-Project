@@ -84,22 +84,16 @@ function showNotification(message, type = 'info') {
 function convertToFahrenheit(celsius) {
     return Math.round((celsius * 9 / 5) + 32);
 }
-
 function convertToCelsius(fahrenheit) {
     return Math.round((fahrenheit - 32) * 5 / 9);
 }
-
 // ---------- Fetch Weather ----------
 function weatherDataDisplay() {
     const inputCity = document.getElementById("city-name-search");
     const city = inputCity.value;
-
     if (!city) return alert("Please enter a city name");
-
     const urlcurrentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
     const urlForecastTime = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-
     fetch(urlcurrentWeather)
         .then((response) => {
             if (!response.ok) alert("city not found");
@@ -108,9 +102,6 @@ function weatherDataDisplay() {
         .then((data) => {
             displayWeatherData(data);
         })
-
-
-
     fetch(urlForecastTime)
         .then(res => {
             return res.json()
@@ -125,26 +116,18 @@ function weatherDataDisplay() {
             daysForecast(dataDate);
         });
 }
-
 function daysForecast(list) {
-
     daysForecastTable.innerHTML = "";
-
     const dates = {};
-
     list.forEach(item => {
         const date = new Date(item.dt_txt);
         const dateStr = date.toISOString().split('T')[0];
-
         if (!dates[dateStr]) {
 
             dates[dateStr] = item;
         }
     });
-
-
     const dailyForecastArray = Object.values(dates);
-
     dailyForecastArray.forEach(forecast => {
         const row = document.createElement("tr");
 
@@ -159,7 +142,6 @@ function daysForecast(list) {
         daysForecastTable.appendChild(row);
     });
 }
-
 
 function hourlyDisplayWeather(list) {
     const today = new Date().getDate();
@@ -238,9 +220,6 @@ function displayTimebaseData(list) {
         `;
     }
 }
-
-
-
 let tempC = 0;
 let feelsLikeC = 0;
 

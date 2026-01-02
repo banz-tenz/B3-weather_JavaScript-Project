@@ -11,6 +11,9 @@
 #concel-menu {
     display: none;
 }
+.logo-menu h2{
+    display: none;
+}
 @import 'components/header';
 @import 'components/map-weather';
 @import 'components/navagation';

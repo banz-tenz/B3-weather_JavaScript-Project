@@ -1,5 +1,14 @@
+
+
 @mixin flex-box($gap:8px){
     display: flex;
     align-items: center;
     gap: $gap;
 }
+
+
+@mixin space-between{
+    display: flex;
+    justify-content: space-between;
+}
+@import 'variable';

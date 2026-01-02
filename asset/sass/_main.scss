@@ -1,0 +1,23 @@
+//scss
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.toggle{
+    display: none;
+}
+#concel-menu {
+    display: none;
+}
+@import 'components/header';
+@import 'components/map-weather';
+@import 'components/navagation';
+@import 'components/currentWeather';
+@import 'components/responsive';
+
+
+
+
+

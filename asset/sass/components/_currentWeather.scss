@@ -1,0 +1,153 @@
+@use "mixin";
+@import "variable";
+
+.weather-body{
+    background-color: $body-background-color;
+}
+
+main{
+    padding-top: 40px;
+    width: 100%;
+    margin-left: 20%;
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 80vh;
+    overflow-y: auto;
+    & .current-weather-section{
+        width: 100%;
+        background: $card-background-color;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        // padding: 80px;
+        padding: 20px;
+        border-radius:$border-radius10 ;
+        
+        & .current-weather-card{
+            width: 100%;
+            color: $text-color;
+            & .current-weather-header{
+                width: 100%;
+                @include space-between();
+                & .city-name{
+                    color: $text-color;
+                }
+            }
+            & .current-temp{
+                font-size: 56px;
+                font-weight: 600;
+                // color: $accent-color;
+            }
+            & .weather-condiction{
+                color: $disabled-color;
+                font-size: 20px;
+                font-weight: 500;
+            }
+            & .current-weather-content{
+                border-bottom: 1px solid $disabled-color;
+                @include space-between();
+                & .weather-icon {
+                    width: 90px;
+                    height: 90px;
+                    margin: 12px
+                }
+            }
+            & .weather-details{
+                @include space-between();
+                border-bottom: 1px solid gray;
+                padding-bottom: 24px;
+                margin-bottom: 24px;
+                margin-top: 20px;
+                & .detail-item{
+                    @include flex-box();
+                    & i {
+                        font-size: 24px;
+                    }
+                }
+            }
+            & .weather-basetime-item{
+                width: 100%;
+                border-collapse: collapse;
+                & thead {
+                    border-bottom: 1px solid gray;
+                }
+                & td,th {
+                    padding: 6px 8px;
+                }
+            }
+        }
+        
+    }
+    & .current-weather-section{
+        color: $text-color;
+        & .weather-hourly{
+            width: 100%;
+            & table {
+                border-collapse: collapse;
+                width: 100%;
+                & thead {
+                    border-bottom: 1px solid gray;
+                }
+                & th,
+                & td {
+                    padding:6px 8px ;
+                }
+            }
+        }
+        & .days-forecast-weather{
+            width: 100%;
+            & table {
+                border-collapse: collapse;
+                width: 100%;
+                & thead {
+                    border-bottom: 1px solid gray;
+                }
+                & th,
+                & td {
+                    padding:6px 8px ;
+                }
+            }
+        }
+    }
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 99999;
+    background-color: rgba(146, 145, 145, 0.867);
+    display: none;
+}
+
+.overlay.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-menu{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(200, 200, 200, 0.822);
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition;
+}
+
+.overlay-menu.active{
+    
+    z-index: 98;
+    opacity: 1;
+    visibility: visible;
+    
+}

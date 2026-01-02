@@ -3,6 +3,8 @@ const apiKey = "629abb62b1ae5affbd864eba93b24a22";
 // ---------- Location Services ----------
 function getCurrentLocationWeather() {
     if (navigator.geolocation) {
+        showNotification('Getting your location...', 'info');
+
         navigator.geolocation.getCurrentPosition(
             async (position) => {
                 const { latitude, longitude } = position.coords;
@@ -22,6 +24,12 @@ function getCurrentLocationWeather() {
                     const inputCity = document.getElementById("city-name-search");
                     inputCity.value = cityName;
                     weatherDataDisplay();
+
+                    // Center map on current location if map is initialized
+                    if (weatherMap) {
+                        weatherMap.setView([latitude, longitude], 10);
+                        addWeatherMarker(latitude, longitude);
+                    }
 
                     // Show success message
                     showNotification(`Weather for ${cityName} loaded!`, 'success');
@@ -351,44 +359,15 @@ searchCity.addEventListener("submit", (e) => {
     loading(600);
 });
 
-// Add location button event listener
-document.addEventListener('DOMContentLoaded', function () {
-    // Create location button
-    const locationBtn = document.createElement('button');
-    locationBtn.type = 'button';
-    locationBtn.className = 'btn btn-outline-primary btn-sm ms-2';
-    locationBtn.innerHTML = '<i class="fas fa-location-crosshairs me-1"></i>Location';
-    locationBtn.onclick = getCurrentLocationWeather;
-
-    // Add location button to search form
-    const searchForm = document.getElementById('search-city');
-    if (searchForm) {
-        searchForm.appendChild(locationBtn);
-    }
-
-    // Check for URL parameters (existing functionality)
-    const params = new URLSearchParams(window.location.search);
-    const cityParam = params.get('city');
-    if (!cityParam) return;
-
-    // Ensure Today section is visible when coming from favorites
-    const todayLink = document.querySelector("a[data-section='today']");
-    if (todayLink) {
-        listLinks.forEach(item => item.classList.remove("active"));
-        todayLink.classList.add("active");
-    }
-
-    if (currentWeather) currentWeather.style.display = 'block';
-    if (hourlyWeather) hourlyWeather.style.display = 'none';
-    if (daysForecastWeather) daysForecastWeather.style.display = 'none';
-
-    const inputCity = document.getElementById("city-name-search");
-    if (!inputCity) return;
-
-    inputCity.value = cityParam;
-    weatherDataDisplay();
-    loading(600);
-});
+// Location button event
+const locationBtn = document.getElementById("locationBtn");
+if (locationBtn) {
+    locationBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        getCurrentLocationWeather();
+        loading(600);
+    });
+}
 
 mobileMenu.addEventListener("click", () => {
     navBar.classList.toggle("active");
@@ -794,7 +773,7 @@ function getCurrentLocation() {
             },
             {
                 enableHighAccuracy: true,
-                timeout: 10000,
+                timeout: 1000,
                 maximumAge: 0
             }
         );
@@ -940,7 +919,7 @@ function initializeMapControls() {
     // Get current location button
     const getCurrentLocationBtn = document.getElementById('getCurrentLocation');
     if (getCurrentLocationBtn) {
-        getCurrentLocationBtn.addEventListener('click', getCurrentLocation);
+        getCurrentLocationBtn.addEventListener('click', getCurrentLocationWeather);
     }
 
     // Clear markers button

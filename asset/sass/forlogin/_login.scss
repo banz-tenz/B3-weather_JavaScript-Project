@@ -61,9 +61,12 @@ body {
 .login-header {
   background: linear-gradient(135deg, $primary-start 0%, $primary-end 100%);
   color: $white;
-  padding: 40px 30px;
+  padding: 16px;
   text-align: center;
   position: relative;
+  display: flex;
+  flex-direction: column;
+ 
 
   .home-link {
     color: rgba(255, 255, 255, 0.8) !important;

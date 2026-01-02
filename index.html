@@ -10,6 +10,7 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -69,6 +70,11 @@
             <a class="nav-link" href="#" data-section="days-forecast">
               <i class="fa-solid fa-calendar"></i>
               5-Days
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="mapBtn" href="#" data-section="map" class="nav-link">
+              <i class="fas fa-map"></i> Map
             </a>
           </li>
         </ul>
@@ -211,6 +217,84 @@
           </div>
          </section>
         <!-- 7-days forecast weather section end -->
+
+        <!-- map weather section start -->
+         <section class="current-weather-section" style="display: none;" id="map-weather">
+          <div class="map-weather-card">
+            <div class="map-weather-header">
+              <h2>Weather Map</h2>
+              <p>Click anywhere on the map to see weather information</p>
+            </div>
+            <div class="map-container">
+              <div id="weather-map" style="height: 500px; width: 100%; border-radius: 8px; overflow: hidden;"></div>
+              
+              <!-- Map Controls -->
+              <div class="map-controls">
+                <div class="search-container">
+                  <input type="text" class="search-input" id="locationSearch" placeholder="Search for a city or location...">
+                  <div class="search-results" id="searchResults"></div>
+                </div>
+                
+                <div class="control-buttons">
+                  <button id="getCurrentLocation" class="control-btn">
+                    <i class="fas fa-location-crosshairs"></i>
+                    <span>My Location</span>
+                  </button>
+                  <button id="clearMarkers" class="control-btn">
+                    <i class="fas fa-trash"></i>
+                    <span>Clear All</span>
+                  </button>
+                </div>
+                
+                <div class="map-layers">
+                  <label class="layer-option">
+                    <input type="radio" name="mapLayer" value="street" checked>
+                    <span>Street Map</span>
+                  </label>
+                  <label class="layer-option">
+                    <input type="radio" name="mapLayer" value="satellite">
+                    <span>Satellite</span>
+                  </label>
+                  <label class="layer-option">
+                    <input type="radio" name="mapLayer" value="terrain">
+                    <span>Terrain</span>
+                  </label>
+                </div>
+                
+                <div class="temperature-legend">
+                  <h6>Temperature Guide</h6>
+                  <div class="temp-guide">
+                    <div class="temp-item">
+                      <div class="temp-color hot"></div>
+                      <span>Hot (>25°C)</span>
+                    </div>
+                    <div class="temp-item">
+                      <div class="temp-color warm"></div>
+                      <span>Warm (15-25°C)</span>
+                    </div>
+                    <div class="temp-item">
+                      <div class="temp-color mild"></div>
+                      <span>Mild (5-15°C)</span>
+                    </div>
+                    <div class="temp-item">
+                      <div class="temp-color cold"></div>
+                      <span>Cold (<5°C)</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="help-text">
+                  <strong>How to use:</strong><br>
+                  • Click anywhere on the map to get weather<br>
+                  • Use "My Location" to find your current weather<br>
+                  • Search for any city or location<br>
+                  • Click markers for detailed weather information
+                </div>
+              </div>
+            </div>
+          </div>
+         </section>
+        <!-- map weather section end -->
     </main>
     <!-- main end -->
 
@@ -226,6 +310,7 @@
 
     <div class="overlay-menu" id="overlay-menu"></div>
   
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="asset/js/main.js"></script>
 </body>
 

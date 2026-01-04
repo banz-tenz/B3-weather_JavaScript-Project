@@ -96,6 +96,16 @@ body {
 .login-header {
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: #fff;
+  padding: 16px;
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 40px 30px;
   text-align: center;
   position: relative;
@@ -392,6 +402,16 @@ body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   background-attachment: fixed;
   color: #fff;
+  padding: 15px;
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 50px 40px;
   text-align: center;
   position: relative;
@@ -416,6 +436,7 @@ body {
           animation: fadeIn 0.8s ease-out;
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 .signup-header h1 i {
   margin-right: 8px;
@@ -429,6 +450,7 @@ body {
           animation: fadeIn 1s ease-out 0.1s both;
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 
 .signup-form {

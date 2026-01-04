@@ -23,6 +23,14 @@ body {
   max-width: 400px;
 }
 
+@media (max-width:430px){
+  .login-wrapper{
+    // height: fit-content;
+    // background-color: red;
+    height: 100vh;
+  }
+}
+
 // Login container
 .login-container {
   background: $white;

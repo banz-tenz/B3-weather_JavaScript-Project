@@ -32,6 +32,11 @@ body {
   max-width: 400px;
 }
 
+@media (max-width: 430px) {
+  .login-wrapper {
+    height: 100vh;
+  }
+}
 .login-container {
   background: #fff;
   border-radius: 20px;
@@ -101,6 +106,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
 }
 .login-header .home-link {
   color: rgba(255, 255, 255, 0.8) !important;
@@ -404,6 +412,10 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 50px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 .signup-header::before {
   content: "";
@@ -1225,6 +1237,7 @@ header {
 }
 header .logo h2 {
   color: white;
+  display: block;
 }
 header form {
   width: 420px;
